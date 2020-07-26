@@ -12,9 +12,15 @@ class SportController extends Controller
         $sports = Sport::all();
         return view('top', compact('sports'));
     }
+
     public function genre()
     {
         $sports = Sport::all();
         return view('sport_genre', compact('sports'));
+    }
+
+    public function eventGenre()
+    {
+        return view('event_genre');
     }
 }
