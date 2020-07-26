@@ -22,6 +22,10 @@
 
      <!-- Font Awesome -->
      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+     <!-- Swiper -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -90,6 +94,7 @@
             <div>
                 <ul>
                     <li><a href="">SPOMATCHについて</a></li>
+                    <li><a href="">ジャンルから探す</a></li>
                     <li><a href="">都道府県一覧</a></li>
                     <li><a href="">マイページ</a></li>
                     <li><a href="">イベント管理</a></li>
