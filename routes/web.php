@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
+Route::get('/', 'SportController@index')->name('home');
+Route::get('/genre', 'SportController@genre')->name('genre');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
