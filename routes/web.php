@@ -13,7 +13,8 @@
 
 Route::get('/', 'SportController@index')->name('home');
 Route::get('/genre', 'SportController@genre')->name('genre');
-Route::get('/event/genre/', 'SportController@eventGenre')->name('eventGenre');
+Route::get('/event/genre/{id}', 'SportController@eventGenre')->name('eventGenre');
+Route::get('/event/detail/{id}', 'SportController@eventDetail')->name('eventDetail');
 
 Auth::routes();
 

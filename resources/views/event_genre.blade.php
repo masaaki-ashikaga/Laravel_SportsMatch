@@ -2,51 +2,34 @@
 
 @section('content')
 <div class="container">
+
     <div class="text-center mt-0 mb-5 border-bottom border-secondary">
         <div class="mt-3 mb-3">
-            <h2>サッカーのイベント</h2>
+            <h2>{{ $sport->sport }}のイベント</h2>
         </div>
-        <img src="{{ asset('image/soccer.jpg') }}" style="width: 100%;">
+        <img src='/image/{{ $sport->imagepath }}' style="width: 100%;">
     </div>
     <div>
         <div class="card">
             <div class="card-header h4">
-              イベント
+              イベント一覧
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                  <div class="d-flex justify-content-center">
-                      <img src="{{ asset('image/soccer.jpg') }}" style="width: 300px;">
-                      <div class="ml-4 pt-4">
-                          <p>開催日：2020年7月30日</p>
-                          <p class="h2">イベントタイトル</p>
-                          <p>イベントのサブタイトル</p>
-                          <p><i class="fas fa-map-marker-alt mr-1"></i>大阪府大阪市中央区東心斎橋1-15-27(白水社ビル6F_4号室)</p>
-                      </div>
-                  </div>
-              </li>
-              <li class="list-group-item">
-                <div class="d-flex justify-content-center">
-                    <img src="{{ asset('image/soccer.jpg') }}" style="width: 300px;">
-                    <div class="ml-4 pt-4">
-                        <p>開催日：2020年7月30日</p>
-                        <p class="h2">イベントタイトル</p>
-                        <p>イベントのサブタイトル</p>
-                        <p><i class="fas fa-map-marker-alt mr-1"></i>大阪府大阪市中央区東心斎橋1-15-27(白水社ビル6F_4号室)</p>
-                    </div>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="d-flex justify-content-center">
-                    <img src="{{ asset('image/soccer.jpg') }}" style="width: 300px;">
-                    <div class="ml-4 pt-4">
-                        <p>開催日：2020年7月30日</p>
-                        <p class="h2">イベントタイトル</p>
-                        <p>イベントのサブタイトル</p>
-                        <p><i class="fas fa-map-marker-alt mr-1"></i>大阪府大阪市中央区東心斎橋1-15-27(白水社ビル6F_4号室)</p>
-                    </div>
-                </div>
-              </li>
+                @foreach($events as $event)
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-center pt-3 pb-3">
+                            <img src="{{ asset('image/soccer.jpg') }}" style="width: 300px;">
+                            <div class="ml-4 pt-4">
+                                <p>開催日：{{ $event->event_start_date }}</p>
+                                <p class="h2">
+                                    <a href="{{ route('eventDetail', ['id' => $event->id]) }}">{{ $event->title }}</a>
+                                </p>
+                                <p>イベントのサブタイトル</p>
+                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
           </div>
     </div>

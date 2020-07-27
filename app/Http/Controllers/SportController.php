@@ -19,8 +19,10 @@ class SportController extends Controller
         return view('sport_genre', compact('sports'));
     }
 
-    public function eventGenre()
+    public function eventGenre($id, Sport $sort)
     {
-        return view('event_genre');
+        $sport = Sport::find($id);
+        $events = $sport->events;
+        return view('event_genre', compact('sport', 'events'));
     }
 }
