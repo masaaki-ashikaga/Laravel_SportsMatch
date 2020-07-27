@@ -26,8 +26,10 @@
             <div class="swiper-wrapper text-center mb-4">
                 @foreach($sports as $sport)
                     <div class="swiper-slide">
-                        <img src='image/{{ $sport->imagepath }}' style="width: 250px; height: 180px;">
-                        <p class="h5 pt-2">{{ $sport->sport }}</p>
+                        <a href="{{ route('eventGenre', ['id' => $sport->id]) }}">
+                            <img src='image/{{ $sport->imagepath }}' style="width: 250px; height: 180px;">
+                            <p class="h5 pt-2 text-secondary">{{ $sport->sport }}</p>
+                        </a>
                     </div>
                 @endforeach
             </div>
