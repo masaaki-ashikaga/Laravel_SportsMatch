@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="text-center mt-4 mb-4">
+        <h1 style="font-family: 'Montserrat Subrayada', sans-serif;">SPOMATCH</h1>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
