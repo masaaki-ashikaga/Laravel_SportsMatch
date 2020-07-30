@@ -28,10 +28,19 @@
                 </li>
                 <li class="list-group-item">
                     <div class="d-flex">
-                        <img src='/image/user_sample.jpg' style="width: 80px; height: 80px;">
+                        <img src='/image/user_sample.jpg' style="width: 50px; height: 50px;">
+                        <div class="ml-4">
+                            <h5 class="card-title mb-2">主催チーム：兵庫社会人サッカーチーム</h5>
+                            <p>チームのコメントここに入れる。</p>
+                            <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex">
+                        <img src='/image/user_sample.jpg' style="width: 50px; height: 50px;">
                         <div class="ml-4">
                             <h5 class="card-title mb-2">イベント主催者：ユーザー名</h5>
-                            <p class="mb-1">所属チーム：</p>
                             <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
                         </div>
                     </div>
