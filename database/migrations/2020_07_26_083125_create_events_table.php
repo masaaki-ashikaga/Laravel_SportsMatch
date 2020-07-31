@@ -23,9 +23,7 @@ class CreateEventsTable extends Migration
             $table->date('event_end_date')->comment('イベント終了日');
             $table->time('event_end_time')->comment('イベント終了時刻');
             $table->integer('capacity')->comment('定員');
-            $table->integer('application')->comment('申し込み数');
             $table->integer('payment')->comment('料金');
-            $table->string('reception_status')->comment('受付状況');
             $table->date('apply_start_date')->comment('受付開始日');
             $table->time('apply_start_time')->comment('受付開始時刻');
             $table->date('apply_end_date')->comment('受付終了日');
