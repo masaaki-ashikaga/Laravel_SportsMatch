@@ -11,7 +11,6 @@ class SportTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('stocks')->truncate();
         DB::table('sports')->insert([
             'sport' => 'サッカー',
             'imagepath' => 'soccer.jpg',

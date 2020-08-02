@@ -23,5 +23,6 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => '1234567',
         'address' => $faker->address,
         'profile' => $faker->realText(200),
+        'imagepath' => 'profile.jpg',
     ];
 });

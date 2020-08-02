@@ -10,7 +10,7 @@ class Event extends Model
         'id'
     ];
 
-    public function sports(){
-        return $this->hasMany('App\Models\Sport');
+    public function sport(){
+        return $this->belongsTo('App\Models\Sport');
     }
 }

@@ -18,6 +18,8 @@ class CreateTeamsTable extends Migration
             $table->string('name');
             $table->text('detail');
             $table->string('area');
+            $table->string('main_imgpath');
+            $table->string('sub_imgpath');
             $table->timestamps();
         });
     }

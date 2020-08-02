@@ -17,6 +17,7 @@ class CreateTeamUserTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('team_id');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('owner_user')->default(false)->comment('チームオーナーユーザー判定');
             $table->timestamps();
 
             $table->foreign('team_id')
