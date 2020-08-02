@@ -29,6 +29,8 @@ class CreateEventsTable extends Migration
             $table->date('apply_end_date')->comment('受付終了日');
             $table->time('apply_end_time')->comment('受付終了時刻');
             $table->string('event_imagepath');
+            $table->unsignedBigInteger('sport_id');
+            $table->unsignedBigInteger('team_id')->nullable();
             $table->timestamps();
         });
     }

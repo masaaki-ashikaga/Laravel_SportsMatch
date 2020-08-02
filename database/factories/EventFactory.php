@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
     return [
-        'title' => $faker->sentence,
-        'comment' => $faker->text,
+        'title' => $faker->realText(50),
+        'comment' => $faker->realText(200),
         'place' => $faker->prefecture,
         'event_start_date' => $faker->date,
         'event_start_time' => $faker->time,
@@ -20,6 +20,8 @@ $factory->define(Event::class, function (Faker $faker) {
         'apply_start_time' => $faker->time,
         'apply_end_date' => $faker->date,
         'apply_end_time' => $faker->time,
-        'event_imagepath' => $faker->url,
+        'event_imagepath' => 'test_event.jpg',
+        'sport_id' => $faker->numberBetween(1, 8),
+        'team_id' => $faker->numberBetween(1, 50)
     ];
 });
