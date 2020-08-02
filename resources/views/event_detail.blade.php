@@ -28,11 +28,10 @@
                 </li>
                 <li class="list-group-item">
                     <div class="d-flex">
-                        <img src='/image/user_sample.jpg' style="width: 50px; height: 50px;">
+                        <img src='/image/{{ $team->main_imgpath }}' style="width: 250px; height: 180px;">
                         <div class="ml-4">
-                            <h5 class="card-title mb-2">主催チーム：兵庫社会人サッカーチーム</h5>
-                            <p>チームのコメントここに入れる。</p>
-                            <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                            <h5 class="card-title mb-2">主催チーム：{{ $team->name }}</h5>
+                            <p>{{ $team->detail }}</p>
                         </div>
                     </div>
                 </li>

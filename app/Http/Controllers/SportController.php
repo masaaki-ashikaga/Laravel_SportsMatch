@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Sport;
 use App\Models\Event;
+use App\Models\Team;
+use App\User;
 use Illuminate\Http\Request;
 
 class SportController extends Controller
@@ -27,9 +29,12 @@ class SportController extends Controller
         return view('event_genre', compact('sport', 'events'));
     }
 
-    public function eventDetail($id)
+    public function eventDetail($id, User $user)
     {
         $event = Event::find($id);
-        return view('event_detail', compact('event'));
+        $team_id = $event->team_id;
+        $team = Team::find($team_id);
+        $users = $event->users;
+        return view('event_detail', compact('event', 'team', 'users'));
     }
 }
