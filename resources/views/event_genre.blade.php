@@ -18,7 +18,7 @@
                 @foreach($events as $event)
                     <li class="list-group-item">
                         <div class="d-flex pt-3 pb-3">
-                            <img src="{{ asset('image/soccer.jpg') }}" style="width: 300px;">
+                            <img src="{{ asset('image/test_event.jpg') }}" style="width: 300px;">
                             <div class="ml-4 pt-4">
                                 <p>開催日：{{ $event->event_start_date }}</p>
                                 <p class="h2">

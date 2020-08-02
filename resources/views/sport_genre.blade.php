@@ -7,8 +7,10 @@
             <div class="d-flex flex-wrap justify-content-between">
                 @foreach($sports as $sport)
                 <div class="mb-5">
-                    <p class="h5 pt-2">{{ $sport->sport }}</p>
-                    <img src='image/{{ $sport->imagepath }}' style="width: 300px; height: 230px;">
+                    <a href="{{ route('eventGenre', ['id' => $sport->id]) }}">
+                        <p class="h5 pt-2">{{ $sport->sport }}</p>
+                        <img src='image/{{ $sport->imagepath }}' style="width: 300px; height: 230px;">
+                    </a>
                 </div>
                 @endforeach
             </div>
