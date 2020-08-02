@@ -37,12 +37,33 @@
                     </div>
                 </li>
                 <li class="list-group-item">
+                    <h5 class="card-title mb-2">イベント主催者：ユーザー名</h5>
                     <div class="d-flex">
-                        <img src='/image/user_sample.jpg' style="width: 50px; height: 50px;">
-                        <div class="ml-4">
-                            <h5 class="card-title mb-2">イベント主催者：ユーザー名</h5>
-                            <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                        @foreach($users as $user)
+                        @if($user->pivot->owner_user)
+                            <img src='/image/{{ $user->imagepath }}' style="width: 50px; height: 50px;">
+                            <div class="ml-4">
+                                <p>{{ $user->name }}</p>
+                                <p>{{ $user->profile }}</p>
+                                <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                            </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex">
+                        <div class="d-flex">
+                            <h5 class="card-title mb-2 mr-4">参加ユーザー</h5>
+                            <p class="mb-0"><i class="fas fa-users mr-1"></i>{{ count($users) }}名</p>
                         </div>
+                    </div>
+                    <div>
+                        @foreach($users as $user)
+                            @if(!$user->pivot->owner_user)
+                                <img src='/image/{{ $user->imagepath }}' style="width: 30px; height: 30px;" class="mr-1">
+                            @endif
+                        @endforeach
                     </div>
                 </li>
             </ul>

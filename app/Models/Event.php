@@ -13,4 +13,13 @@ class Event extends Model
     public function sport(){
         return $this->belongsTo('App\Models\Sport');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User')->withPivot('owner_user');
+    }
+
+    public function teams(){
+        return $this->belongsTo('App\Models\Team');
+    }
+
 }
