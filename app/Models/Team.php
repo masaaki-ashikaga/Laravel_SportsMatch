@@ -13,4 +13,8 @@ class Team extends Model
     public function events(){
         return $this->hasMany('App\Models\Event');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User')->withPivot('owner_user');
+    }
 }
