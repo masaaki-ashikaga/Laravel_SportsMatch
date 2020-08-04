@@ -41,7 +41,9 @@
                     <div class="d-flex">
                         @foreach($users as $user)
                         @if($user->pivot->owner_user)
-                            <img src='/image/{{ $user->imagepath }}' style="width: 50px; height: 50px;">
+                            <a href="{{ route('userDetail', ['id' => $user->id]) }}">
+                                <img src='/image/{{ $user->imagepath }}' style="width: 50px; height: 50px;">
+                            </a>
                             <div class="ml-4">
                                 <p>{{ $user->name }}</p>
                                 <p>{{ $user->profile }}</p>
@@ -61,7 +63,9 @@
                     <div>
                         @foreach($users as $user)
                             @if(!$user->pivot->owner_user)
-                                <img src='/image/{{ $user->imagepath }}' style="width: 30px; height: 30px;" class="mr-1">
+                            <a href="{{ route('userDetail', ['id' => $user->id]) }}">
+                                <img src='/image/{{ $user->imagepath }}' style="width: 30px; height: 30px;" class="mr-1 mb-1">
+                            </a>
                             @endif
                         @endforeach
                     </div>
