@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header d-flex pb-0">
                 <p class="h5">プロフィール</p>
-                <p class="ml-5"><i class="fas fa-map-marker-alt mr-1"></i>{{ $user->address }}</p>
+                <p class="ml-5"><i class="fas fa-map-marker-alt mr-1"></i>{{ $user->area }}</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
