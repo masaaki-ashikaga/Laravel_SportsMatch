@@ -44,4 +44,12 @@ class SportController extends Controller
         $users = $team->users;
         return view('team_detail', compact('team', 'users'));
     }
+
+    public function userDetail($id)
+    {
+        $user = User::find($id);
+        $teams = $user->teams;
+        $events = $user->events;
+        return view('user_detail', compact('user', 'teams', 'events'));
+    }
 }
