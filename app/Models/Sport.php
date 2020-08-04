@@ -13,4 +13,8 @@ class Sport extends Model
     public function teams(){
         return $this->belongsToMany('App\Models\Team');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User');
+    }
 }

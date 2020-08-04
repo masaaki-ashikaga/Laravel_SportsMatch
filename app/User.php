@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function teams(){
         return $this->belongsToMany('App\Models\Team')->withPivot('owner_user');
     }
+
+    public function sports(){
+        return $this->belongsToMany('App\Models\Sport');
+    }
 }
