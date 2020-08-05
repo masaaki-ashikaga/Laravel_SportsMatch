@@ -17,6 +17,7 @@
                         </div>
                         <div>
                             <p class="mt-5">{{ $user->profile }}</p>
+                            <p><i class="fas fa-running mr-2"></i>好きなスポーツ：<span class="p-1 bg-primary text-white mt-0 font-weight-bold" style="border-radius: 10px;">野球</span></p>
                         </div>
                     </div>
                 </li>
