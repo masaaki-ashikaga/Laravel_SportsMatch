@@ -82,37 +82,27 @@
         <div class="swiper-container mb-5 pb-3">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h4>大阪のイベント</h4>
+                    <h4>最近作成されたイベント</h4>
                 </div>
                 <div class="d-flex justify-content-between">
                     <a href="" class="mr-3">すべて表示</a>
                 </div>
             </div>
+
             <div class="swiper-wrapper text-center mb-4">
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">イベントA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">イベントA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">イベントA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">イベントA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">イベントA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">イベントA</p>
-                </div>
+                @foreach($events as $key => $event)
+                    <div class="swiper-slide">
+                        <a href="{{ route('eventDetail', ['id' => $event->id]) }}">
+                            <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
+                            <p class="pt-2 pr-4 pl-4">{{ $event->title }}</p>
+                        </a>
+                        <div class="d-flex justify-content-center">
+                            <p class="mb-0 mr-5">開催:{{ $event->event_start_date }}</p>
+                            <p class="mb-0 mr-5"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                            <p><i class="fas fa-running"></i>{{ $event_genre[$key] }}</p>
+                        </div>
+                    </div>
+                    @endforeach
             </div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
