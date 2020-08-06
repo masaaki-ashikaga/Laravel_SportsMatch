@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="text-center mt-0 mb-5 border-bottom border-secondary">
-        <img src='/image/soccer.jpg' style="width: 100%;">
+        <img src='/image/{{ $sport_img }}' style="width: 100%;">
     </div>
     <div>
         <div class="card">
