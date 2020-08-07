@@ -48,30 +48,14 @@
                 </div>
             </div>
             <div class="swiper-wrapper text-center mb-4">
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">チームA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">チームA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">チームA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">チームA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">チームA</p>
-                </div>
-                <div class="swiper-slide">
-                    <img src='image/soccer.jpg' style="width: 250px; height: 180px;">
-                    <p class="h5 pt-2">チームA</p>
-                </div>
+                @foreach($teams as $team)
+                    <div class="swiper-slide">
+                        <a href="">
+                            <img src="/image/{{ $team->main_imgpath }}" style="width: 250px; height: 180px;">
+                            <p class="pt-2 pr-4 pl-4">{{ $team->name }}</p>
+                        </a>
+                    </div>
+                @endforeach
             </div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
