@@ -60,4 +60,13 @@ class SportController extends Controller
         $events = $user->events;
         return view('user_detail', compact('user', 'teams', 'events'));
     }
+
+    public function eventIndex()
+    {
+        $events = Event::all();
+        foreach($events as $event){
+            $event_genre[] = Sport::find($event->sport_id)->sport;
+        }
+        return view('event_index', compact('events', 'event_genre'));
+    }
 }
