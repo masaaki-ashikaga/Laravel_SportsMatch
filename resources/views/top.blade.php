@@ -85,19 +85,19 @@
                     <h4>最近作成されたイベント</h4>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="" class="mr-3">すべて表示</a>
+                    <a href="{{ route('eventIndex') }}" class="mr-3">すべて表示</a>
                 </div>
             </div>
 
             <div class="swiper-wrapper text-center mb-4">
                 @foreach($events as $key => $event)
                     <div class="swiper-slide">
+                        <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
                         <a href="{{ route('eventDetail', ['id' => $event->id]) }}">
                             <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4">{{ $event->title }}</p>
                         </a>
                         <div class="d-flex justify-content-center">
-                            <p class="mb-0 mr-5">開催:{{ $event->event_start_date }}</p>
                             <p class="mb-0 mr-5"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
                             <p><i class="fas fa-running"></i>{{ $event_genre[$key] }}</p>
                         </div>

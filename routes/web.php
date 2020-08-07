@@ -15,6 +15,7 @@ Route::get('/', 'SportController@index')->name('home');
 Route::get('/genre', 'SportController@genre')->name('genre');
 Route::get('/event/genre/{id}', 'SportController@eventGenre')->name('eventGenre');
 Route::get('/event/detail/{id}', 'SportController@eventDetail')->name('eventDetail');
+Route::get('/event/index', 'SportController@eventIndex')->name('eventIndex');
 Route::get('/team/detail/{id}', 'SportController@teamDetail')->name('teamDetail');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
 
