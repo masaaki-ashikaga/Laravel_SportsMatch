@@ -44,13 +44,13 @@
                     <h4>大阪のチーム</h4>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="" class="mr-3">すべて表示</a>
+                    <a href="{{ route('teamIndex') }}" class="mr-3">すべて表示</a>
                 </div>
             </div>
             <div class="swiper-wrapper text-center mb-4">
                 @foreach($teams as $team)
                     <div class="swiper-slide">
-                        <a href="">
+                        <a href="{{ route('teamDetail', ['id' => $team->id]) }}">
                             <img src="/image/{{ $team->main_imgpath }}" style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4">{{ $team->name }}</p>
                         </a>

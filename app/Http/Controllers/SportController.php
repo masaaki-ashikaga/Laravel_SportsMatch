@@ -69,4 +69,11 @@ class SportController extends Controller
         }
         return view('event_index', compact('events', 'event_genre'));
     }
+
+    public function teamIndex(Team $team){
+        $teams = Team::all();
+        $sports = $team->sports;
+        dd($sports);
+        return view('team_index', compact('teams'));
+    }
 }
