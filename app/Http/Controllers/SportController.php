@@ -72,8 +72,16 @@ class SportController extends Controller
 
     public function teamIndex(Team $team){
         $teams = Team::all();
-        $sports = $team->sports;
-        dd($sports);
+        foreach($teams as $key => $team){
+            $sports[] = $team->sports;
+        }
         return view('team_index', compact('teams'));
+    }
+
+    public function mypage($id){
+        $user = User::find($id);
+        $teams = $user->teams;
+        $events = $user->events;
+        return view('mypage', compact('user', 'teams', 'events'));
     }
 }

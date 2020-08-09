@@ -19,6 +19,7 @@ Route::get('/event/index', 'SportController@eventIndex')->name('eventIndex');
 Route::get('/team/detail/{id}', 'SportController@teamDetail')->name('teamDetail');
 Route::get('/team/index', 'SportController@teamIndex')->name('teamIndex');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
+Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
 
 Auth::routes();
 

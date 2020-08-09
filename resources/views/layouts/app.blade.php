@@ -70,6 +70,7 @@
                                     </a>
                                     <a class="dropdown-item" href="">イベント管理</a>
                                     <a class="dropdown-item" href="">イベント作成</a>
+                                    <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::id()]) }}">マイページ</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
