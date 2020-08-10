@@ -37,7 +37,7 @@ class SportController extends Controller
         return view('event_genre', compact('sport', 'events'));
     }
 
-    public function eventDetail($id, User $user)
+    public function eventDetail($id, User $user, EventUser $eventUser)
     {
         $event = Event::find($id);
         $sport_id = $event->sport_id;
@@ -45,7 +45,9 @@ class SportController extends Controller
         $team_id = $event->team_id;
         $team = Team::find($team_id);
         $users = $event->users;
-        return view('event_detail', compact('event', 'team', 'users', 'sport_img'));
+        $event_user = EventUser::all();
+        $event_user_id = $event_user->where('event_id', $id)->where('user_id', Auth::id())->first();
+        return view('event_detail', compact('event', 'team', 'users', 'sport_img', 'event_user_id'));
     }
 
     public function teamDetail($id)
@@ -91,6 +93,12 @@ class SportController extends Controller
         $user_id = Auth::id();
         $event_id = $request->event_id;
         $eventUser->joinEvent($event_id, $user_id);
+        return back();
+    }
+
+    public function cancelEvent($id, EventUser $eventUser)
+    {
+        $eventUser->cancelEvent($id);
         return back();
     }
 }

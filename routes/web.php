@@ -22,6 +22,7 @@ Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail'
 Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
 
 Route::post('/event/join', 'SportController@joinEvent')->name('joinEvent');
+Route::post('/event/cancel/{id}', 'SportController@cancelEvent')->name('cancelEvent');
 
 Auth::routes();
 

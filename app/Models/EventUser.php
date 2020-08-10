@@ -15,4 +15,9 @@ class EventUser extends Model
         $this->save();
         return;
     }
+
+    public function cancelEvent($id)
+    {
+        return $this->where('id', $id)->delete();
+    }
 }
