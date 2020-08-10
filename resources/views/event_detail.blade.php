@@ -22,6 +22,11 @@
                                 <p class="mr-5">開催日：{{ $event->event_start_date }}</p>
                                 <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
                             </div>
+                            <form method="POST" action="{{ url('/event/join') }}">
+                                @csrf
+                                <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                <input type="submit" value="このイベントに参加する" class="btn btn-primary">
+                            </form>
                         </div>
                     </div>
                 </li>

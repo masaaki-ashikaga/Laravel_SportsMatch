@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Sport;
 use App\Models\Event;
 use App\Models\Team;
+use App\Models\EventUser;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -83,5 +85,12 @@ class SportController extends Controller
         $teams = $user->teams;
         $events = $user->events;
         return view('mypage', compact('user', 'teams', 'events'));
+    }
+
+    public function joinEvent(Request $request, EventUser $eventUser){
+        $user_id = Auth::id();
+        $event_id = $request->event_id;
+        $eventUser->joinEvent($event_id, $user_id);
+        return back();
     }
 }

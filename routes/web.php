@@ -21,6 +21,8 @@ Route::get('/team/index', 'SportController@teamIndex')->name('teamIndex');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
 Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
 
+Route::post('/event/join', 'SportController@joinEvent')->name('joinEvent');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
