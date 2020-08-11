@@ -44,13 +44,13 @@
                     <h4>大阪のチーム</h4>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('teamIndex') }}" class="mr-3">すべて表示</a>
+                    <a href="{{ route('team.index') }}" class="mr-3">すべて表示</a>
                 </div>
             </div>
             <div class="swiper-wrapper text-center mb-4">
                 @foreach($teams as $team)
                     <div class="swiper-slide">
-                        <a href="{{ route('teamDetail', ['id' => $team->id]) }}">
+                        <a href="{{ route('team.show', ['team' => $team->id]) }}">
                             <img src="/image/{{ $team->main_imgpath }}" style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4">{{ $team->name }}</p>
                         </a>
@@ -69,7 +69,7 @@
                     <h4>最近作成されたイベント</h4>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('eventIndex') }}" class="mr-3">すべて表示</a>
+                    <a href="{{ route('event.index') }}" class="mr-3">すべて表示</a>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
                 @foreach($events as $key => $event)
                     <div class="swiper-slide">
                         <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
-                        <a href="{{ route('eventDetail', ['id' => $event->id]) }}">
+                        <a href="{{ route('event.show', ['event' => $event->id]) }}">
                             <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4">{{ $event->title }}</p>
                         </a>

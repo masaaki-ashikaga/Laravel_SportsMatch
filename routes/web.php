@@ -13,19 +13,20 @@
 
 Route::get('/', 'SportController@index')->name('home');
 Route::get('/genre', 'SportController@genre')->name('genre');
-Route::get('/event/genre/{id}', 'SportController@eventGenre')->name('eventGenre');
-Route::get('/event/detail/{id}', 'SportController@eventDetail')->name('eventDetail');
-Route::get('/event/index', 'SportController@eventIndex')->name('eventIndex');
-Route::get('/team/detail/{id}', 'SportController@teamDetail')->name('teamDetail');
-Route::get('/team/index', 'SportController@teamIndex')->name('teamIndex');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
 Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
 
-Route::post('/team/join', 'SportController@joinTeam')->name('joinTeam');
-Route::post('/team/cancel/{id}', 'SportController@cancelTeam')->name('cancelTeam');
-Route::post('/event/join', 'SportController@joinEvent')->name('joinEvent');
-Route::post('/event/cancel/{id}', 'SportController@cancelEvent')->name('cancelEvent');
+Route::resource('team', 'TeamController', ['only' => ['index', 'show']]);
+Route::group(['prefix' => 'team'], function(){
+    Route::post('/join', 'TeamController@joinTeam')->name('joinTeam');
+    Route::post('/cancel/{id}', 'TeamController@cancelTeam')->name('cancelTeam');
+    });
+
+Route::resource('event', 'EventController', ['only' => ['index', 'show']]);
+Route::group(['prefix' => 'event'], function(){
+    Route::get('/genre/{id}', 'EventController@eventGenre')->name('eventGenre');
+    Route::post('/join', 'EventController@joinEvent')->name('joinEvent');
+    Route::post('/cancel/{id}', 'EventController@cancelEvent')->name('cancelEvent');
+    });
 
 Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
