@@ -18,6 +18,19 @@
                             <div class="ml-4">
                                 <h5 class="card-title mb-2">{{ $team->name }}</h5>
                                 <p>{{ $team->detail }}</p>
+                                @if(!in_array(Auth::user()->id, array_column($team->users->toArray(), 'id'), TRUE))
+                                    <form method="POST" action="{{ url('/team/join') }}">
+                                        @csrf
+                                        <input type="hidden" name="team_id" value="{{ $team->id }}">
+                                        <input type="submit" value="このチームに参加する" class="btn btn-primary">
+                                    </form>
+                                @else
+                                    <form method="POST" action="{{ url('/team/cancel/' . $team_user_id->id) }}">
+                                        @csrf
+                                        <input type="hidden" name="team_id" value="{{ $team->id }}">
+                                        <input type="submit" value="チームを退会する" class="btn btn-danger">
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
