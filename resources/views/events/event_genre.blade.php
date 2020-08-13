@@ -24,8 +24,7 @@
                                 <p class="h2">
                                     <a href="{{ route('event.show', ['event' => $event->id]) }}">{{ $event->title }}</a>
                                 </p>
-                                <p>イベントのサブタイトル</p>
-                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
                             </div>
                         </div>
                     </li>

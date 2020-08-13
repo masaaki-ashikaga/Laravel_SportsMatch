@@ -37,7 +37,9 @@
                         <div class="d-flex mt-2 mb-2">
                             <img src="/image/{{ $team->main_imgpath }}" style="width: 200px; height: 170px;">
                             <div class="ml-4">
-                                <h5>{{ $team->name }}</h5>
+                                <a href="{{ route('team.show', ['team' => $team->id]) }}">
+                                    <h5>{{ $team->name }}</h5>
+                                </a>
                                 <p>{{ $team->detail }}</p>
                                 <div class="d-flex">
                                     <p class="mt-2"><i class="fas fa-map-marker-alt mr-1"></i>活動エリア：{{ $team->area }}</p>
@@ -67,10 +69,12 @@
                                 <img src="/image/{{ $event->event_imagepath }}" style="width: 200px; height: 170px;">
                             </div>
                             <div class="ml-4">
-                                <h5>{{ $event->title }}</h5>
+                                <a href="{{ route('event.show', ['event' => $event->id]) }}">
+                                    <h5>{{ $event->title }}</h5>
+                                </a>
                                 <p>{{ $event->comment }}</p>
                                 <div class="d-flex">
-                                    <p class="mt-2"><i class="fas fa-map-marker-alt mr-1"></i>開催地：{{ $event->place }}</p>
+                                    <p class="mt-2"><i class="fas fa-map-marker-alt mr-1"></i>開催地：{{ $event->address }}</p>
                                     @if($event->pivot->owner_user)
                                     <p class="p-2 bg-success text-white ml-5 mt-0 font-weight-bold text-center" style="width: px; border-radius: 10px;">主催</p>
                                 </div>

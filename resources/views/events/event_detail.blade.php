@@ -18,9 +18,9 @@
                         <div class="ml-4">
                             <h4 class="card-title mb-1">{{ $event->title }}</h4>
                             <p>{{ $event->comment }}</p>
-                            <div class="d-flex">
+                            <div>
                                 <p class="mr-5">開催日：{{ $event->event_start_date }}</p>
-                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
                             </div>
                             @if(!in_array(Auth::user()->id, array_column($event->users->toArray(), 'id'), TRUE))
                                 <form method="POST" action="{{ url('/event/join') }}">
@@ -60,7 +60,7 @@
                             <div class="ml-4">
                                 <p>{{ $user->name }}</p>
                                 <p>{{ $user->profile }}</p>
-                                <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                                <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $user->area }}</p>
                             </div>
                         @endif
                         @endforeach

@@ -81,12 +81,12 @@
                             <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4">{{ $event->title }}</p>
                         </a>
-                        <div class="d-flex justify-content-center">
-                            <p class="mb-0 mr-5"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->place }}</p>
+                        <div>
+                            <p class="mb-0 mr-auto ml-auto" style="width: 200px;"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
                             <p><i class="fas fa-running"></i>{{ $event_genre[$key] }}</p>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
             </div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
