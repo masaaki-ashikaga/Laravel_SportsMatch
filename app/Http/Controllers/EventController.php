@@ -32,9 +32,15 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(TeamUser $teamUser, Sport $sport)
     {
-        //
+        $teams_id = $teamUser->where('user_id', Auth::id())->where('owner_user', 1)->get('team_id');
+        foreach($teams_id as $team_id){
+            $teams[] = Team::find($team_id)->pluck('name', 'id');
+        }
+        $sports = $sport->select('id', 'sport')->get('sport');
+
+        return view('events.event_create', compact('teams', 'sports'));
     }
 
     /**
@@ -43,9 +49,10 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Event $event)
     {
-        //
+        $event->createEvent($request);
+        return redirect('/');
     }
 
     /**

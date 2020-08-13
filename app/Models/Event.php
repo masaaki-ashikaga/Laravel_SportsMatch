@@ -22,4 +22,13 @@ class Event extends Model
         return $this->belongsTo('App\Models\Team');
     }
 
+    public function createEvent($request){
+        $event = new Event;
+        $new_event = $request->only([
+            'title', 'comment', 'venue', 'address','event_start_date', 'event_start_time', 'event_end_date', 'event_end_time', 'capacity', 'payment', 'apply_end_date', 'apply_end_time', 'sport_id', 'team_id'
+            ]);
+        $event->fill($new_event)->save();
+        return $event;
+    }
+
 }

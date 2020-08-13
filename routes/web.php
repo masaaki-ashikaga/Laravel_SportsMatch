@@ -22,7 +22,7 @@ Route::group(['prefix' => 'team'], function(){
     Route::post('/cancel/{id}', 'TeamController@cancelTeam')->name('cancelTeam');
     });
 
-Route::resource('event', 'EventController', ['only' => ['index', 'show', 'create']]);
+Route::resource('event', 'EventController', ['only' => ['index', 'show', 'create', 'store']]);
 Route::group(['prefix' => 'event'], function(){
     Route::get('/genre/{id}', 'EventController@eventGenre')->name('eventGenre');
     Route::post('/join', 'EventController@joinEvent')->name('joinEvent');
