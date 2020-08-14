@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'SportController@index')->name('home');
+Route::get('/home', 'SportController@index')->name('home');
 Route::get('/genre', 'SportController@genre')->name('genre');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
 Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
