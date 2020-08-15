@@ -13,11 +13,16 @@
                     <div class="d-flex">
                         <div>
                             <h5 class="card-title mt-2 mb-2 ml-5">{{ $user->name }}</h5>
+                            @if($user->imagepath == null)
+                            <img src="/image/profile.jpg" style="width: 170px; height: 170px;">
+                            @else
                             <img src="/image/{{ $user->imagepath }}" style="width: 170px; height: 170px;">
+                            @endif
                         </div>
                         <div>
                             <p class="mt-5">{{ $user->profile }}</p>
                             <p><i class="fas fa-running mr-2"></i>好きなスポーツ：<span class="p-1 bg-primary text-white mt-0 font-weight-bold" style="border-radius: 10px;">野球</span></p>
+                            {{-- 好きなスポーツをDBから取ってない。 --}}
                         </div>
                     </div>
                 </li>
