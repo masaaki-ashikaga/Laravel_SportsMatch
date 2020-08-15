@@ -15,6 +15,7 @@ Route::get('/home', 'SportController@index')->name('home');
 Route::get('/genre', 'SportController@genre')->name('genre');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
 Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
+Route::get('/event/manage', 'EventController@eventManage')->name('eventManage');
 
 Route::resource('team', 'TeamController', ['only' => ['index', 'show']]);
 Route::group(['prefix' => 'team'], function(){
@@ -28,5 +29,6 @@ Route::group(['prefix' => 'event'], function(){
     Route::post('/join', 'EventController@joinEvent')->name('joinEvent');
     Route::post('/cancel/{id}', 'EventController@cancelEvent')->name('cancelEvent');
     });
+
 
 Auth::routes();

@@ -68,7 +68,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="">イベント管理</a>
+                                    <a class="dropdown-item" href="{{ route('eventManage') }}">イベント管理</a>
                                     <a class="dropdown-item" href="{{ route('event.create') }}">イベント作成</a>
                                     <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::id()]) }}">マイページ</a>
 

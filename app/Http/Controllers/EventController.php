@@ -52,7 +52,7 @@ class EventController extends Controller
     public function store(Request $request, Event $event)
     {
         $event->createEvent($request);
-        return redirect('/');
+        return redirect('/home');
     }
 
     /**
@@ -127,5 +127,13 @@ class EventController extends Controller
     {
         $eventUser->cancelEvent($id);
         return back();
+    }
+
+    public function eventManage(EventUser $eventUser)
+    {
+        $user_id = Auth::user()->id;
+        $owner_event = $eventUser->where('user_id', $user_id)->get();
+        dd($owner_event);
+        return view('events.event_manage');
     }
 }
