@@ -31,7 +31,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background: #87CEFA">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="font-family: 'Montserrat Subrayada', sans-serif; color: #fff; font-size: 30px;">
+                <a class="navbar-brand" href="{{ url('/home') }}" style="font-family: 'Montserrat Subrayada', sans-serif; color: #fff; font-size: 30px;">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
