@@ -49,9 +49,10 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Event $event)
+    public function store(Request $request, Event $event, EventUser $eventUser)
     {
-        $event->createEvent($request);
+        $event_id = $event->createEvent($request);
+        $eventUser->createEvent($event_id);
         return redirect('/home');
     }
 
@@ -133,7 +134,6 @@ class EventController extends Controller
     {
         $user_id = Auth::user()->id;
         $owner_event = $eventUser->where('user_id', $user_id)->get();
-        dd($owner_event);
         return view('events.event_manage');
     }
 }

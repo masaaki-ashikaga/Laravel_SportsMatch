@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class EventUser extends Model
@@ -19,5 +20,15 @@ class EventUser extends Model
     public function cancelEvent($id)
     {
         return $this->where('id', $id)->delete();
+    }
+
+    public function createEvent($event_id)
+    {
+        $user_id = Auth::user()->id;
+        $this->event_id = $event_id;
+        $this->user_id = $user_id;
+        $this->owner_user = true;
+        $this->save();
+        return;
     }
 }
