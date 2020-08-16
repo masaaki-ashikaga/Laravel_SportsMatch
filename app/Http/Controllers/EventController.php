@@ -83,7 +83,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+        return view('events.event_edit', compact('event'));
     }
 
     /**
@@ -133,7 +134,7 @@ class EventController extends Controller
     public function eventManage(EventUser $eventUser)
     {
         $user_id = Auth::user()->id;
-        $owner_event = $eventUser->where('user_id', $user_id)->get();
-        return view('events.event_manage');
+        $events = $eventUser->ownerEvents($user_id);
+        return view('events.event_manage', compact('events'));
     }
 }
