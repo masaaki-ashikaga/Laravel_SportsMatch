@@ -79,10 +79,10 @@
                         <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
                         <a href="{{ route('event.show', ['event' => $event->id]) }}">
                             <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
-                            <p class="pt-2 pr-4 pl-4">{{ $event->title }}</p>
+                            <p class="pt-2 pr-4 pl-4 mr-auto ml-auto" style="width: 250px;">{{ $event->title }}</p>
                         </a>
                         <div>
-                            <p class="mb-0 mr-auto ml-auto" style="width: 200px;"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
+                            <p class="mb-0 mr-auto ml-auto" style="width: 250px;"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
                             <p><i class="fas fa-running"></i>{{ $event_genre[$key] }}</p>
                         </div>
                     </div>
