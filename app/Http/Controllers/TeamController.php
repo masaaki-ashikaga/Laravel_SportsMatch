@@ -34,7 +34,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('teams.team_create');
     }
 
     /**
@@ -43,9 +43,11 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Team $team, TeamUser $teamUser)
     {
-        //
+        $team_id = $team->createTeam($request);
+        $teamUser->createTeam($team_id);
+        return redirect('/home');
     }
 
     /**
@@ -108,5 +110,9 @@ class TeamController extends Controller
     public function cancelTeam($id, TeamUser $teamUser){
         $teamUser->cancelTeam($id);
         return back();
+    }
+
+    public function teamManage(){
+        return view('teams.team_manage');
     }
 }

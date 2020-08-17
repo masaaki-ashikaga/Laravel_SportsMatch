@@ -70,6 +70,8 @@
                                     </a>
                                     <a class="dropdown-item" href="{{ route('eventManage') }}">イベント管理</a>
                                     <a class="dropdown-item" href="{{ route('event.create') }}">イベント作成</a>
+                                    <a class="dropdown-item" href="{{ route('teamManage') }}">チーム管理</a>
+                                    <a class="dropdown-item" href="{{ route('team.create') }}">チーム作成</a>
                                     <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::id()]) }}">マイページ</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    protected $guarded = [
+        'id'
+    ];
+
     public function sports(){
         return $this->belongsToMany('App\Models\Sport');
     }
@@ -16,5 +20,13 @@ class Team extends Model
 
     public function users(){
         return $this->belongsToMany('App\User')->withPivot('owner_user');
+    }
+
+    public function createTeam($request){
+        $team = new Team;
+        $new_team = $request->only(['name', 'detail', 'area', 'main_imgpath', 'sub_imgpath']);
+        $team->fill($new_team)->save();
+        $team_id = $team->id;
+        return $team_id;
     }
 }
