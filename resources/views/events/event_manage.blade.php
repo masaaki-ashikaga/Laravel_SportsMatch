@@ -6,8 +6,8 @@
     <div class="mb-5">
         <div class="card">
             <div class="card-header d-flex pb-0 justify-content-between">
-                <p class="h5">作成中のイベント</p>
-                <p class="mr-5"><a href="{{ route('event.create') }}" role="button">新規イベント作成</a></p>
+                <p class="h5 mt-auto mb-auto pb-2">作成中のイベント</p>
+                <p class="mr-5"><a href="{{ route('event.create') }}" class="btn btn-primary">新規イベント作成</a></p>
             </div>
             <ul class="list-group list-group-flush">
                 @foreach($events as $items)
