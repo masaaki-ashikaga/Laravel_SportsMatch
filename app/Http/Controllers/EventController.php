@@ -39,7 +39,6 @@ class EventController extends Controller
             $teams[] = Team::find($team_id)->pluck('name', 'id');
         }
         $sports = $sport->select('id', 'sport')->get('sport');
-
         return view('events.event_create', compact('teams', 'sports'));
     }
 
@@ -81,10 +80,15 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, TeamUser $teamUser, Sport $sport)
     {
+        $teams_id = $teamUser->where('user_id', Auth::id())->where('owner_user', 1)->get('team_id');
+        foreach($teams_id as $team_id){
+            $teams[] = Team::find($team_id)->pluck('name', 'id');
+        }
+        $sports = $sport->select('id', 'sport')->get('sport');
         $event = Event::find($id);
-        return view('events.event_edit', compact('event'));
+        return view('events.event_edit', compact('event', 'teams', 'sports'));
     }
 
     /**
@@ -94,9 +98,11 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-        //
+        $id = $request->id;
+        $event->updateEvent($id, $request);
+        return redirect()->route('home');
     }
 
     /**
@@ -105,9 +111,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Event $event)
     {
-        //
+        $event->eventDestroy($id);
+        return redirect()->route('home');
     }
 
     public function eventGenre($id)

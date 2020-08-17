@@ -12,7 +12,6 @@
             <ul class="list-group list-group-flush">
                 @foreach($events as $items)
                 @foreach($items as $event)
-                <?php //dd($events) ?>
                     <li class="list-group-item">
                         <div class="d-flex pt-3 pb-3">
                             @if($event->event_imagepath != null)
@@ -27,8 +26,13 @@
                             </div>
                         </div>
                         <div class="d-flex">
-                            <p class="mr-4"><a href="{{ route('event.edit', ['event' => $event->id]) }}" class="btn btn-primary">編集</a></p>
-                            <p><a href="#" class="btn btn-danger">削除</a></p>
+                            <p class="mr-4"><a href="{{ route('event.edit',['event' => $event->id]) }}" class="btn btn-primary">編集</a></p>
+                            <form method="POST" action="{{ route('event.destroy', ['event' => $event->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="id" value="{{ $event->id }}">
+                                <input type="submit" class="btn btn-danger" value="削除">
+                            </form>
                         </div>
                     </li>
                 @endforeach
