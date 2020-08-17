@@ -13,7 +13,6 @@
             </form>
         </div>
     </div>
-    <a href="{{ route('eventManage') }}">イベント管理</a>
     <div>
         <div class="swiper-container mb-5 pb-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between">
