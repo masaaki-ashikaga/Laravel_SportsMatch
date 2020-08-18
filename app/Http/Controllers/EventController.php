@@ -102,7 +102,7 @@ class EventController extends Controller
     {
         $id = $request->id;
         $event->updateEvent($id, $request);
-        return redirect()->route('home');
+        return redirect()->route('eventManage');
     }
 
     /**
@@ -114,7 +114,7 @@ class EventController extends Controller
     public function destroy(Request $request)
     {
         Event::find($request->id)->delete();
-        return redirect()->route('home');
+        return redirect()->route('eventManage');
     }
 
     public function eventGenre($id)

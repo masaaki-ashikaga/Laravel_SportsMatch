@@ -41,9 +41,4 @@ class Event extends Model
         $event->fill($update_event)->update();
         return;
     }
-
-    public function eventDestroy($id)
-    {
-        return $this->where('id', $id)->delete();
-    }
 }
