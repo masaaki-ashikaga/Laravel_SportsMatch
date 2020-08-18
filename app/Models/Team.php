@@ -29,4 +29,11 @@ class Team extends Model
         $team_id = $team->id;
         return $team_id;
     }
+
+    public function teamUpdate($id, $request){
+        $team = Team::find($id);
+        $update_team = $request->only(['name', 'detail', 'area', 'main_imgpath', 'sub_imgpath']);
+        $team->fill($update_team)->update();
+        return;
+    }
 }

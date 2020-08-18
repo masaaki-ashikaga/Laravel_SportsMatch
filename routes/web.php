@@ -19,7 +19,7 @@ Route::get('/event/manage', 'EventController@eventManage')->name('eventManage');
 Route::get('/team/manage', 'TeamController@teamManage')->name('teamManage');
 
 
-Route::resource('team', 'TeamController', ['only' => ['index', 'show', 'create', 'store']]);
+Route::resource('team', 'TeamController');
 Route::group(['prefix' => 'team'], function(){
     Route::post('/join', 'TeamController@joinTeam')->name('joinTeam');
     Route::post('/cancel/{id}', 'TeamController@cancelTeam')->name('cancelTeam');

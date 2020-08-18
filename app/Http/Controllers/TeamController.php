@@ -73,7 +73,8 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::find($id);
+        return view('teams.team_edit', compact('team'));
     }
 
     /**
@@ -83,9 +84,11 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Team $team)
     {
-        //
+        $id = $request->id;
+        $team->teamUpdate($id, $request);
+        return redirect()->route('teamManage');
     }
 
     /**
@@ -94,9 +97,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Team::find($request->id)->delete();
+        return redirect()->route('teamManage');
     }
 
     public function joinTeam(Request $request, TeamUser $teamUser)
@@ -112,7 +116,9 @@ class TeamController extends Controller
         return back();
     }
 
-    public function teamManage(){
-        return view('teams.team_manage');
+    public function teamManage(TeamUser $teamUser){
+        $user_id = Auth::user()->id;
+        $teams = $teamUser->ownerTeams($user_id);
+        return view('teams.team_manage', compact('teams'));
     }
 }
