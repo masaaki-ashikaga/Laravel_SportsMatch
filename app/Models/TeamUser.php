@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Team;
 
 class TeamUser extends Model
 {
@@ -29,5 +30,13 @@ class TeamUser extends Model
         $this->owner_user = true;
         $this->save();
         return;
+    }
+
+    public function ownerTeams($user_id){
+        $teams_id = $this->where('user_id', $user_id)->where('owner_user', 1)->select('team_id')->get();
+        foreach($teams_id as $team_id){
+            $teams[] = Team::find($team_id);
+        }
+        return $teams;
     }
 }
