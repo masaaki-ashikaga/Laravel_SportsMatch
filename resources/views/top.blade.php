@@ -41,7 +41,11 @@
         <div class="swiper-container mb-5 pb-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h4>大阪のチーム</h4>
+                    @if(Auth::user() != null)
+                    <h4>{{ auth()->user()->area }}のチーム</h4>
+                    @else
+                    <h4>東京のチーム</h4>
+                    @endif
                 </div>
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('team.index') }}" class="mr-3">すべて表示</a>

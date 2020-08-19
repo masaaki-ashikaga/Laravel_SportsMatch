@@ -22,6 +22,7 @@
                                 <p class="mr-5">開催日：{{ $event->event_start_date }}</p>
                                 <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
                             </div>
+                            @if(Auth::user() != null)
                             @if(!in_array(Auth::user()->id, array_column($event->users->toArray(), 'id'), TRUE))
                                 <form method="POST" action="{{ url('/event/join') }}">
                                     @csrf
@@ -34,6 +35,9 @@
                                     <input type="hidden" name="event_id" value="{{ $event->id }}">
                                     <input type="submit" value="イベントをキャンセルする" class="btn btn-danger">
                                 </form>
+                            @endif
+                            @else
+                                <a href="/login" class="btn btn-secondary text-white">ログインしてイベントに参加する</a>
                             @endif
                         </div>
                     </div>

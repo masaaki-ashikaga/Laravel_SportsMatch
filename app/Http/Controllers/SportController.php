@@ -14,8 +14,12 @@ class SportController extends Controller
     public function index(Team $team, User $user, Event $event)
     {
         $sports = Sport::all();
-        $user_area = auth()->user()->area;
-        $teams = $team->where('area', $user_area)->get();
+        if(Auth::user() != null){
+            $user_area = auth()->user()->area;
+            $teams = $team->where('area', $user_area)->get();
+        } else{
+            $teams = $team->where('area', '東京都')->get();
+        }
         $events = $event->orderBy('created_at', 'asc')->limit(10)->get();
         foreach($events as $event){
             $event_genre[] = Sport::find($event->sport_id)->sport;
