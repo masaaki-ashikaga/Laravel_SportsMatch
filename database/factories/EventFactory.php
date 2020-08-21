@@ -20,6 +20,7 @@ $factory->define(Event::class, function (Faker $faker) {
         'apply_end_date' => $faker->date,
         'apply_end_time' => $faker->time,
         'event_imagepath' => 'test_event.jpg',
+        'public' => $faker->numberBetween(0, 1),
         'sport_id' => $faker->numberBetween(1, 8),
         'team_id' => $faker->numberBetween(1, 50)
     ];
