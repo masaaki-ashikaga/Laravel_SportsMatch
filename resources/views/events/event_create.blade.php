@@ -11,11 +11,13 @@
                         <label for="team_id">このイベントが所属するチーム</label>
                         <select class="form-control" name="team_id">
                             <option value="">チームを選択して下さい。</option>
+                            @if($teams != null)
                             @foreach($teams as $team)
                             @foreach($team as $key => $name)
                             <option value="{{ $key }}">{{ $name }}</option>
                             @endforeach
                             @endforeach
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">
@@ -24,6 +26,14 @@
                             <option value="">スポーツジャンルを選択して下さい。</option>
                             @foreach($sports as $sport)
                             <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prefecture">都道府県</label>
+                        <select type="text" class="form-control" name="prefecture">
+                            @foreach(config('pref') as $key => $score)
+                            <option value="{{ $score }}">{{ $score }}</option>
                             @endforeach
                         </select>
                     </div>
