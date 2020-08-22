@@ -14,7 +14,7 @@ class SportController extends Controller
     public function index(Team $team, User $user, Event $event)
     {
         $sports = Sport::all();
-        if(Auth::user() != null){
+        if(Auth::user() != null && auth()->user()->area != null){
             $user_area = auth()->user()->area;
             $teams = $team->where('area', $user_area)->get();
         } else{

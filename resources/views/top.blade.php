@@ -41,7 +41,7 @@
         <div class="swiper-container mb-5 pb-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between">
                 <div>
-                    @if(Auth::user() != null)
+                    @if(Auth::user() != null && auth()->user()->area != null)
                     <h4>{{ auth()->user()->area }}のチーム</h4>
                     @else
                     <h4>東京のチーム</h4>
