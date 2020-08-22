@@ -38,6 +38,9 @@ class EventController extends Controller
         foreach($teams_id as $team_id){
             $teams[] = Team::find($team_id)->pluck('name', 'id');
         }
+        if(!isset($teams)){
+            $teams = null;
+        }
         $sports = $sport->select('id', 'sport')->get('sport');
         return view('events.event_create', compact('teams', 'sports'));
     }
@@ -141,7 +144,12 @@ class EventController extends Controller
     public function eventManage(EventUser $eventUser)
     {
         $user_id = Auth::user()->id;
-        $events = $eventUser->ownerEvents($user_id);
-        return view('events.event_manage', compact('events'));
+        $events_id = $eventUser->where('user_id', $user_id)->where('owner_user', 1)->select('event_id')->get();
+        if($events_id->isEmpty()){
+            return view('events.event_manage');
+        } else{
+            $events = $eventUser->ownerEvents($user_id);
+            return view('events.event_manage', compact('events'));
+        }
     }
 }

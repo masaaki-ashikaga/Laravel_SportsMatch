@@ -10,6 +10,7 @@
                 <p class="mr-5"><a href="{{ route('event.create') }}" class="btn btn-primary">新規イベント作成</a></p>
             </div>
             <ul class="list-group list-group-flush">
+                @if(isset($events))
                 @foreach($events as $items)
                 @foreach($items as $event)
                     <li class="list-group-item">
@@ -37,6 +38,13 @@
                     </li>
                 @endforeach
                 @endforeach
+                @else
+                <li class="list-group-item">
+                    <div class="d-flex pt-3 pb-3">
+                        <p>作成中のイベントはありません。</p>
+                    </div>
+                </li>
+            @endif
             </ul>
         </div>
     </div>

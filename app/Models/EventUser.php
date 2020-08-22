@@ -32,9 +32,9 @@ class EventUser extends Model
         return;
     }
 
-    public function ownerEvents($user_id)
+    public function ownerEvents($events_id)
     {
-        $events_id = $this->where('user_id', $user_id)->where('owner_user', 1)->select('event_id')->get();
+        // $events_id = $this->where('user_id', $user_id)->where('owner_user', 1)->select('event_id')->get();
         foreach($events_id as $event_id){
             $events[] = Event::find($event_id);
         }
