@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('comment');
+            $table->string('prefecture')->comment('都道府県');
             $table->string('venue')->comment('会場')->nullable();
             $table->string('address')->comment('イベント開催住所');
             $table->date('event_start_date')->comment('イベント開催日');

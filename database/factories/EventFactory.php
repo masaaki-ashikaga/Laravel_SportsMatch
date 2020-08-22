@@ -9,6 +9,7 @@ $factory->define(Event::class, function (Faker $faker) {
     return [
         'title' => $faker->realText(50),
         'comment' => $faker->realText(200),
+        'prefecture' => $faker->prefecture,
         'venue' => $faker->realText(10),
         'address' => $faker->address,
         'event_start_date' => $faker->date,
