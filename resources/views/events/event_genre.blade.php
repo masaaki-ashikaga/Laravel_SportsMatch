@@ -15,6 +15,7 @@
               イベント一覧
             </div>
             <ul class="list-group list-group-flush">
+                @if(!empty($events))
                 @foreach($events as $event)
                     <li class="list-group-item">
                         <div class="d-flex pt-3 pb-3">
@@ -29,6 +30,13 @@
                         </div>
                     </li>
                 @endforeach
+                @else
+                <li class="list-group-item">
+                    <div class="d-flex pt-2">
+                        <p>{{ $sport->sport }}のイベントはありません。</p>
+                    </div>
+                </li>
+            @endif
             </ul>
           </div>
     </div>

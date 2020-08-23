@@ -18,9 +18,9 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Event $event)
     {
-        $events = Event::all();
+        $events = $event->where('public', 1)->get();
         foreach($events as $event){
             $event_genre[] = Sport::find($event->sport_id)->sport;
         }
@@ -123,7 +123,8 @@ class EventController extends Controller
     public function eventGenre($id)
     {
         $sport = Sport::find($id);
-        $events = $sport->events;
+        $items = $sport->events;
+        $events = $items->where('public', 1)->all();
         return view('events.event_genre', compact('sport', 'events'));
     }
 
