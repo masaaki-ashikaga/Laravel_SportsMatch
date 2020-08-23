@@ -96,7 +96,8 @@
                     <div class="form-group">
                         <label for="event_imagepath">イベントイメージ画像</label>
                         <input type="file" class="form-control-file" name="event_imagepath">
-                      </div>
+                    </div>
+                    <input type="hidden" name="public" value="0">
                     <input type="submit" class="btn btn-primary" value="イベント作成">
                   </form>
             </div>

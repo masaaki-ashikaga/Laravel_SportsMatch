@@ -27,6 +27,11 @@
                             </div>
                         </div>
                         <div class="d-flex">
+                            @if($event->public === 0)
+                            <p class="mr-4"><a href="{{ route('eventPublic',['id' => $event->id]) }}" class="btn btn-primary">公開する</a></p>
+                            @else
+                            <p class="mr-4"><a href="{{ route('eventPublic',['id' => $event->id]) }}" class="btn btn-primary">公開中</a></p>
+                            @endif
                             <p class="mr-4"><a href="{{ route('event.edit',['event' => $event->id]) }}" class="btn btn-primary">編集</a></p>
                             <form method="POST" action="{{ route('event.destroy', ['event' => $event->id]) }}">
                                 @csrf

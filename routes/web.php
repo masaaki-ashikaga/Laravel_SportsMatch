@@ -29,6 +29,7 @@ Route::resource('event', 'EventController');
 
 Route::group(['prefix' => 'event'], function(){
     Route::get('/genre/{id}', 'EventController@eventGenre')->name('eventGenre');
+    Route::get('/public/{id}', 'EventController@eventPublic')->name('eventPublic');
     Route::post('/join', 'EventController@joinEvent')->name('joinEvent');
     Route::post('/cancel/{id}', 'EventController@cancelEvent')->name('cancelEvent');
 });

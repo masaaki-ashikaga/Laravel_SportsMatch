@@ -148,8 +148,14 @@ class EventController extends Controller
         if($events_id->isEmpty()){
             return view('events.event_manage');
         } else{
-            $events = $eventUser->ownerEvents($user_id);
+            $events = $eventUser->ownerEvents($events_id);
             return view('events.event_manage', compact('events'));
         }
+    }
+
+    public function eventPublic($id, Event $event)
+    {
+        $event->publicEvent($id);
+        return back();
     }
 }
