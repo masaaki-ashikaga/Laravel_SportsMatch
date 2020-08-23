@@ -86,7 +86,7 @@
                             <p class="pt-2 pr-4 pl-4 mr-auto ml-auto" style="width: 250px;">{{ $event->title }}</p>
                         </a>
                         <div>
-                            <p class="mb-0 mr-auto ml-auto" style="width: 250px;"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
+                            <p class="mb-0 mr-auto ml-auto" style="width: 250px;"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->prefecture }}</p>
                             <p><i class="fas fa-running"></i>{{ $event_genre[$key] }}</p>
                         </div>
                     </div>
