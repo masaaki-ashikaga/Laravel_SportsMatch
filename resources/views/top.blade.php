@@ -80,7 +80,12 @@
             <div class="swiper-wrapper text-center mb-4">
                 @foreach($events as $key => $event)
                     <div class="swiper-slide">
-                        <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
+                        <div class="d-flex justify-content-between mr-auto ml-auto" style="width: 250px;">
+                            <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
+                            @if(date('Y-m-d') < $event->event_start_date)
+                                <p class="pt-2 pr-2 mb-1 font-weight-bold">終了</p>
+                            @endif
+                        </div>
                         <a href="{{ route('event.show', ['event' => $event->id]) }}">
                             <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4 mr-auto ml-auto" style="width: 250px;">{{ $event->title }}</p>
