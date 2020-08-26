@@ -82,7 +82,7 @@
                     <div class="swiper-slide">
                         <div class="d-flex justify-content-between mr-auto ml-auto" style="width: 250px;">
                             <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
-                            @if(date('Y-m-d') < $event->event_start_date)
+                            @if(date('Y-m-d') > $event->event_start_date)
                                 <p class="pt-2 pr-2 mb-1 font-weight-bold">終了</p>
                             @endif
                         </div>
