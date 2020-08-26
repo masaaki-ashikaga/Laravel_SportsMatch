@@ -15,13 +15,19 @@
               イベント一覧
             </div>
             <ul class="list-group list-group-flush">
+
                 @if(!empty($events))
                 @foreach($events as $event)
                     <li class="list-group-item">
                         <div class="d-flex pt-3 pb-3">
                             <img src="{{ asset('image/test_event.jpg') }}" style="width: 300px;">
                             <div class="ml-4 pt-4">
-                                <p>開催日：{{ $event->event_start_date }}</p>
+                                <div class="d-flex">
+                                    <p class="mr-4">開催日：{{ $event->event_start_date }}</p>
+                                    @if(date('Y-m-d') > $event->event_start_date)
+                                        <p class="font-weight-bold">終了</p>
+                                    @endif
+                                </div>
                                 <p class="h2">
                                     <a href="{{ route('event.show', ['event' => $event->id]) }}">{{ $event->title }}</a>
                                 </p>
