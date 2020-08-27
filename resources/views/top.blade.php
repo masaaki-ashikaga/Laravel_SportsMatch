@@ -83,15 +83,19 @@
                         <div class="d-flex justify-content-between mr-auto ml-auto" style="width: 250px;">
                             <p class="pt-2 mb-1 font-weight-bold">開催:{{ $event->event_start_date }}</p>
                             @if(date('Y-m-d') > $event->event_start_date)
-                                <p class="pt-2 pr-2 mb-1 font-weight-bold">終了</p>
+                                <p class="pt-2 pr-2 mb-1 font-weight-bold">イベント終了</p>
+                            @elseif(date('Y-m-d') > $event->apply_end_date)
+                                <p class="pt-2 pr-2 mb-1 font-weight-bold">受付終了</p>
+                            @else
+                                <p class="pt-2 pr-2 mb-1 font-weight-bold">募集中</p>
                             @endif
                         </div>
                         <a href="{{ route('event.show', ['event' => $event->id]) }}">
                             <img src='/image/{{ $event->event_imagepath }}' style="width: 250px; height: 180px;">
                             <p class="pt-2 pr-4 pl-4 mr-auto ml-auto" style="width: 250px;">{{ $event->title }}</p>
                         </a>
-                        <div>
-                            <p class="mb-0 mr-auto ml-auto" style="width: 250px;"><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->prefecture }}</p>
+                        <div class="d-flex justify-content-between mr-auto ml-auto" style="width: 200px;">
+                            <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->prefecture }}</p>
                             <p><i class="fas fa-running"></i>{{ $event_genre[$key] }}</p>
                         </div>
                     </div>
