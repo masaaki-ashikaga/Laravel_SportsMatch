@@ -8,12 +8,15 @@
     <div>
         <div class="card">
             <div class="card-header d-flex pb-0">
-              <p class="h5">イベント詳細</p>
-              <p class="ml-5 mb-0">募集：{{ count($users) }}/{{ $event->capacity }}人</p>
-              @if(date('Y-m-d') > $event->event_start_date)
-              <p class="ml-4 font-weight-bold">イベント終了</p>
-              @endif
-              <p></p>
+                <p class="h5">イベント詳細</p>
+                <p class="ml-5 mb-0">募集：{{ count($users) }}/{{ $event->capacity }}人</p>
+                @if(date('Y-m-d') > $event->event_start_date)
+                    <p class="ml-4 font-weight-bold">イベント終了</p>
+                @elseif(date('Y-m-d') > $event->apply_end_date)
+                    <p class="ml-4 font-weight-bold">受付終了</p>
+                @else
+                    <p class="ml-4 font-weight-bold">募集中</p>
+                @endif
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
