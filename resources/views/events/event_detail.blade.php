@@ -17,6 +17,10 @@
                 @else
                     <p class="ml-4 font-weight-bold">募集中</p>
                 @endif
+
+                @if(count($users) >= $event->capacity)
+                    <p class="ml-4 font-weight-bold">満員</p>
+                @endif
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
