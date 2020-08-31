@@ -86,6 +86,8 @@
                                 <p class="pt-2 pr-2 mb-1 font-weight-bold">イベント終了</p>
                             @elseif(date('Y-m-d') > $event->apply_end_date)
                                 <p class="pt-2 pr-2 mb-1 font-weight-bold">受付終了</p>
+                            @elseif($participant[$key] >= $event->capacity)
+                                <p class="pt-2 pr-2 mb-1 font-weight-bold">満員</p>
                             @else
                                 <p class="pt-2 pr-2 mb-1 font-weight-bold">募集中</p>
                             @endif
