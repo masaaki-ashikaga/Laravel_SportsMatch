@@ -21,7 +21,7 @@ class SportController extends Controller
         } else{
             $teams = $team->where('area', '東京都')->get();
         }
-        $events = $event->where('public', 1)->orderBy('created_at', 'asc')->limit(10)->get();
+        $events = $event->where('public', 1)->orderBy('created_at', 'desc')->limit(10)->get();
         foreach($events as $event){
             $participant[] = count($eventUser->where('event_id', $event->id)->get());
             $event_genre[] = Sport::find($event->sport_id)->sport;
