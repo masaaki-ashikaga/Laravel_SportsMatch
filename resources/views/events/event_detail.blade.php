@@ -52,6 +52,7 @@
                         </div>
                     </div>
                 </li>
+                @if($team != null)
                 <li class="list-group-item">
                     <div class="d-flex">
                         <img src='/image/{{ $team->main_imgpath }}' style="width: 250px; height: 180px;">
@@ -63,18 +64,27 @@
                         </div>
                     </div>
                 </li>
+                @endif
                 <li class="list-group-item">
                     <h5 class="card-title mb-2">イベント主催者：ユーザー名</h5>
                     <div class="d-flex">
                         @foreach($users as $user)
                         @if($user->pivot->owner_user)
                             <a href="{{ route('userDetail', ['id' => $user->id]) }}">
-                                <img src='/image/{{ $user->imagepath }}' style="width: 50px; height: 50px;">
+                                @if($user->imagepath != null)
+                                    <img src='/image/{{ $user->imagepath }}' style="width: 50px; height: 50px;">
+                                @else
+                                    <img src='/image/profile.jpg' style="width: 50px; height: 50px;">
+                                @endif
                             </a>
                             <div class="ml-4">
                                 <p>{{ $user->name }}</p>
                                 <p>{{ $user->profile }}</p>
+                                @if($user->area != null)
                                 <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ $user->area }}</p>
+                                @else
+                                <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>未登録</p>
+                                @endif
                             </div>
                         @endif
                         @endforeach
