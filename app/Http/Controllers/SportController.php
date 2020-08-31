@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Sport;
 use App\Models\Event;
 use App\Models\Team;
+use App\Models\EventUser;
 use App\User;
 use Illuminate\Http\Request;
 
 class SportController extends Controller
 {
-    public function index(Team $team, User $user, Event $event)
+    public function index(Team $team, User $user, Event $event, EventUser $eventUser)
     {
         $sports = Sport::all();
         if(Auth::user() != null && auth()->user()->area != null){
@@ -22,9 +23,10 @@ class SportController extends Controller
         }
         $events = $event->where('public', 1)->orderBy('created_at', 'asc')->limit(10)->get();
         foreach($events as $event){
+            $participant[] = count($eventUser->where('event_id', $event->id)->get());
             $event_genre[] = Sport::find($event->sport_id)->sport;
         }
-        return view('top', compact('sports', 'teams', 'events', 'event_genre'));
+        return view('top', compact('sports', 'teams', 'events', 'event_genre', 'participant'));
     }
 
     public function genre()
