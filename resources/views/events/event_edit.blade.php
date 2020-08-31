@@ -14,11 +14,13 @@
                         <a>新しいチームを追加</a>
                         <select class="form-control" name="team_id">
                             <option value="">チームを選択して下さい。</option>
+                            @if($teams != null)
                             @foreach($teams as $team)
                             @foreach($team as $key => $name)
                             <option value="{{ $key }}">{{ $name }}</option>
                             @endforeach
                             @endforeach
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">

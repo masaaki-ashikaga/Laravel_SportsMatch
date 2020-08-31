@@ -89,6 +89,9 @@ class EventController extends Controller
         foreach($teams_id as $team_id){
             $teams[] = Team::find($team_id)->pluck('name', 'id');
         }
+        if(!isset($teams)){
+            $teams = null;
+        }
         $sports = $sport->select('id', 'sport')->get('sport');
         $event = Event::find($id);
         return view('events.event_edit', compact('event', 'teams', 'sports'));
