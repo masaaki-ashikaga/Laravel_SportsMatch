@@ -10,12 +10,13 @@
                 <p class="mr-5"><a href="{{ route('team.create') }}" class="btn btn-primary">新規チーム作成</a></p>
             </div>
             <ul class="list-group list-group-flush">
+                @if($teams != null)
                 @foreach($teams as $items)
                 @foreach($items as $team)
                     <li class="list-group-item">
                         <div class="d-flex pt-3 pb-3">
                             @if($team->main_imgpath != null)
-                            <img src="/image/{{ $team->main_imgpath }}" style="width: 300px;">
+                            <img src="/image/{{ $team->main_imgpath }}" style="width: 300px; height: 210px;">
                             @else
                             <img src="/image/no_image.jpg" style="width: 300px; height: 210px;">
                             @endif
@@ -36,6 +37,13 @@
                     </li>
                 @endforeach
                 @endforeach
+                @else
+                    <li class="list-group-item">
+                        <div class="d-flex pt-3 pb-3">
+                            <p>作成したチームはありません。</p>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

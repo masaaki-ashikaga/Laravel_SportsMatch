@@ -12,8 +12,12 @@
                         <input type="text" class="form-control" name="name" placeholder="チーム名を入力して下さい。">
                     </div>
                     <div class="form-group">
-                      <label for="area">活動エリア</label>
-                      <input type="text" class="form-control" name="area" placeholder="活動エリアを入力して下さい。">
+                        <label for="area">都道府県</label>
+                        <select type="text" class="form-control" name="area">
+                            @foreach(config('pref') as $key => $score)
+                            <option value="{{ $score }}">{{ $score }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="detail">チーム紹介文</label>
