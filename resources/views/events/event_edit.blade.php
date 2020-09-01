@@ -33,6 +33,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                      <label for="prefecture">都道府県</label>
+                      <select type="text" class="form-control" name="prefecture">
+                          @foreach(config('pref') as $key => $score)
+                          <option value="{{ $score }}">{{ $score }}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label for="title">イベントタイトル</label>
                       <input type="text" class="form-control" name="title" placeholder="イベントタイトル" value="{{ $event->title }}">
                     </div>

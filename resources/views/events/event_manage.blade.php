@@ -23,7 +23,7 @@
                             <div class="ml-4 pt-4">
                                 <p>開催日：{{ $event->event_start_date }}</p>
                                 <p class="h2">{{ $event->title }}</p>
-                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
+                                <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->prefecture }}</p>
                             </div>
                         </div>
                         <div class="d-flex">
