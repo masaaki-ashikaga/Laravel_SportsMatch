@@ -37,6 +37,9 @@ class TeamUser extends Model
         foreach($teams_id as $team_id){
             $teams[] = Team::find($team_id);
         }
+        if(!isset($teams)){
+            $teams = null;
+        }
         return $teams;
     }
 }
