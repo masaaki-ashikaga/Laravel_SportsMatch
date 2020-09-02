@@ -24,7 +24,8 @@ class EventController extends Controller
         foreach($events as $event){
             $event_genre[] = Sport::find($event->sport_id)->sport;
         }
-        return view('events.event_index', compact('events', 'event_genre'));
+        $sports = Sport::all();
+        return view('events.event_index', compact('events', 'event_genre', 'sports'));
     }
 
     /**
@@ -161,5 +162,15 @@ class EventController extends Controller
     {
         $event->publicEvent($id);
         return back();
+    }
+
+    public function findEvent(Request $request, Event $event)
+    {
+        $events = $event->search($request);
+        foreach($events as $event){
+            $event_genre[] = Sport::find($event->sport_id)->sport;
+        }
+        $sports = Sport::all();
+        return view('events.event_find', compact('events', 'event_genre', 'sports'));
     }
 }

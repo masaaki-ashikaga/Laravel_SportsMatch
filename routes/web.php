@@ -32,6 +32,7 @@ Route::group(['prefix' => 'event'], function(){
     Route::get('/public/{id}', 'EventController@eventPublic')->name('eventPublic');
     Route::post('/join', 'EventController@joinEvent')->name('joinEvent');
     Route::post('/cancel/{id}', 'EventController@cancelEvent')->name('cancelEvent');
+    Route::post('/find', 'EventController@findEvent')->name('findEvent');
 });
 
 

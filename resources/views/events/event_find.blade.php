@@ -4,23 +4,7 @@
     <div class="container">
         <div class="d-flex mb-4 justify-content-between">
             <h3 class="">イベント一覧</h3>
-            <form class="form-inline my-2 my-lg-0" action="{{ route('findEvent') }}" method="POST">
-                @csrf
-                <label for="prefecture" class="mr-3 font-weight-bold">開催地</label>
-                <select type="text" class="form-control mr-3" name="prefecture">
-                    @foreach(config('pref') as $key => $score)
-                    <option value="{{ $score }}">{{ $score }}</option>
-                    @endforeach
-                </select>
-                <label for="genre" class="ml-2 mr-3 font-weight-bold">スポーツジャンル</label>
-                <select type="text" class="form-control mr-3" name="genre">
-                    <option value="">未選択</option>
-                    @foreach($sports as $sport)
-                        <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
-                    @endforeach
-                </select>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-            </form>
+            <a href="{{ route('event.index') }}" class="font-weight-bold">イベント一覧に戻る</a>
         </div>
         <div class="row">
             <div class="d-flex flex-wrap justify-content-between">

@@ -48,4 +48,15 @@ class Event extends Model
         $event->save();
         return;
     }
+
+    public function search($request){
+        if($request->prefecture != '未選択' && $request->genre != null){
+            $events = Event::where('prefecture', $request->prefecture)->where('public', 1)->where('sport_id', $request->genre)->get();
+        } else if($request->prefecture != '未選択' && $request->genre = null){
+            $events = Event::where('prefecture', $request->prefecture)->where('public', 1)->get();
+        } else if($request->prefecture = '未選択' && $request->genre != null){
+            $events = Event::where('sport_id', $request->genre)->where('public', 1)->get();
+        }
+        return $events;
+    }
 }
