@@ -75,7 +75,8 @@ class EventController extends Controller
         $users = $event->users;
         $event_user = EventUser::all();
         $event_user_id = $event_user->where('event_id', $id)->where('user_id', Auth::id())->first();
-        return view('events.event_detail', compact('event', 'team', 'users', 'sport_img', 'event_user_id'));
+        $event_owner = $event_user_id->where('event_id', $id)->where('owner_user', 1)->first();
+        return view('events.event_detail', compact('event', 'team', 'users', 'sport_img', 'event_user_id', 'event_owner'));
     }
 
     /**

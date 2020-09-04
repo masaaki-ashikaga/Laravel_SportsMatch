@@ -33,21 +33,25 @@
                                 <p><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->address }}</p>
                             </div>
                             @if(Auth::user() != null)
-                            @if(!in_array(Auth::user()->id, array_column($event->users->toArray(), 'id'), TRUE))
-                                <form method="POST" action="{{ url('/event/join') }}">
-                                    @csrf
-                                    <input type="hidden" name="event_id" value="{{ $event->id }}">
-                                    <input type="submit" value="このイベントに参加する" class="btn btn-primary">
-                                </form>
-                            @else
-                                <form method="POST" action="{{ url('/event/cancel/' . $event_user_id->id )}}">
-                                    @csrf
-                                    <input type="hidden" name="event_id" value="{{ $event->id }}">
-                                    <input type="submit" value="イベントをキャンセルする" class="btn btn-danger">
-                                </form>
-                            @endif
-                            @else
-                                <a href="/login" class="btn btn-secondary text-white">ログインしてイベントに参加する</a>
+                                @if(!in_array(Auth::user()->id, array_column($event->users->toArray(), 'id'), TRUE))
+                                    <form method="POST" action="{{ url('/event/join') }}">
+                                        @csrf
+                                        <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                        <input type="submit" value="このイベントに参加する" class="btn btn-primary">
+                                    </form>
+                                @else
+                                    @if(Auth::user()->id === $event_owner->user_id)
+                                        <p class="bg-secondary text-white text-center p-2" style="border-radius: 5px;">このイベントの主催者</p>
+                                    @else
+                                    <form method="POST" action="{{ url('/event/cancel/' . $event_user_id->id )}}">
+                                        @csrf
+                                        <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                        <input type="submit" value="イベントをキャンセルする" class="btn btn-danger">
+                                    </form>
+                                    @endif
+                                @endif
+                                @else
+                                    <a href="/login" class="btn btn-secondary text-white">ログインしてイベントに参加する</a>
                             @endif
                         </div>
                     </div>
