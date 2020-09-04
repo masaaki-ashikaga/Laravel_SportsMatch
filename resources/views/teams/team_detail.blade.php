@@ -25,6 +25,8 @@
                                         <input type="hidden" name="team_id" value="{{ $team->id }}">
                                         <input type="submit" value="このチームに参加する" class="btn btn-primary">
                                     </form>
+                                @elseif(Auth::user()->id === $team_user_id->user_id)
+                                    <p class="bg-secondary text-white text-center p-2" style="border-radius: 5px; width: 200px;">このチームのオーナー</p>
                                 @else
                                     <form method="POST" action="{{ url('/team/cancel/' . $team_user_id->id) }}">
                                         @csrf
@@ -45,7 +47,11 @@
                         @foreach($users as $user)
                         @if($user->pivot->owner_user)
                             <a href="{{ route('userDetail', ['id' => $user->id]) }}">
+                                @if($user->imagepath != null)
                                 <img src='/image/{{ $user->imagepath }}' style="width: 50px; height: 50px;">
+                                @else
+                                <img src='/image/profile.jpg' style="width: 50px; height: 50px;">
+                                @endif
                             </a>
                             <div class="ml-4">
                                 <p>{{ $user->name }}</p>

@@ -62,6 +62,12 @@ class TeamController extends Controller
         $users = $team->users;
         $team_user = TeamUser::all();
         $team_user_id = $team_user->where('team_id', $id)->where('user_id', Auth::id())->first();
+        // if($team_user_id != null){
+        //     $team_owner = $team_user_id->where('owner_user', 1)->first();
+        // } else{
+        //     $team_owner = null;
+        // }
+        // dd($team_owner);
         return view('teams.team_detail', compact('team', 'users', 'team_user_id'));
     }
 
