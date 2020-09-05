@@ -9,6 +9,8 @@ use App\Models\EventUser;
 use App\Models\Sport;
 use App\Models\Team;
 use App\Models\TeamUser;
+use App\Models\SportTeam;
+
 use App\User;
 
 class TeamController extends Controller
@@ -20,11 +22,9 @@ class TeamController extends Controller
      */
     public function index(Team $team)
     {
-        $teams = Team::all();
-        foreach($teams as $key => $team){
-            $sports[] = $team->sports;
-        }
-        return view('teams.team_index', compact('teams'));
+        $teams = Team::with('sports')->get();
+        $sports = Sport::all();
+        return view('teams.team_index', compact('teams', 'sports'));
     }
 
     /**
@@ -126,5 +126,18 @@ class TeamController extends Controller
         $user_id = Auth::user()->id;
         $teams = $teamUser->ownerTeams($user_id);
         return view('teams.team_manage', compact('teams'));
+    }
+
+    public function findTeam(Request $request, Team $team)
+    {
+        $teams_id = SportTeam::where('sport_id', $request->genre)->get('team_id');
+        if(!$teams_id->isEmpty()){
+            foreach($teams_id as $team_id){
+                $teams[] = Team::find($team_id);
+            }
+        } else{
+            $teams = null;
+        }
+        return view('teams.team_find', compact('teams'));
     }
 }

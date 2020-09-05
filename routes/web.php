@@ -23,6 +23,7 @@ Route::resource('team', 'TeamController');
 Route::group(['prefix' => 'team'], function(){
     Route::post('/join', 'TeamController@joinTeam')->name('joinTeam');
     Route::post('/cancel/{id}', 'TeamController@cancelTeam')->name('cancelTeam');
+    Route::post('/find', 'TeamController@findTeam')->name('findTeam');
 });
 
 Route::resource('event', 'EventController');

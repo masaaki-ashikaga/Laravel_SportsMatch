@@ -3,22 +3,14 @@
 @section('content')
     <div class="container">
         <div class="d-flex mb-4 justify-content-between">
-        <h3 class="mb-4">イベント一覧</h3>
-            <form class="form-inline my-2 my-lg-0" action="{{ route('findTeam') }}" method="POST">
-                @csrf
-                <label for="genre" class="ml-2 mr-3 font-weight-bold">スポーツジャンル</label>
-                <select type="text" class="form-control mr-3" name="genre">
-                    <option value="">未選択</option>
-                    @foreach($sports as $sport)
-                        <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
-                    @endforeach
-                </select>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-            </form>
+            <h3 class="mb-4">イベント一覧</h3>
+            <a href="{{ route('team.index') }}" class="font-weight-bold">チーム一覧に戻る</a>
         </div>
         <div class="row">
             <div class="d-flex flex-wrap justify-content-between">
-                @foreach($teams as $key => $team)
+                @if(isset($teams))
+                @foreach($teams as $items)
+                @foreach($items as $team)
                 <div class="mb-5" style="width: 350px;">
                     <div class="d-flex">
                         <p class="mb-0 mr-5"><i class="fas fa-map-marker-alt mr-1"></i>{{ $team->area }}</p>
@@ -32,6 +24,10 @@
                     </a>
                 </div>
                 @endforeach
+                @endforeach
+                @else
+                <p>該当のチームはございません。</p>
+                @endif
             </div>
         </div>
     </div>
