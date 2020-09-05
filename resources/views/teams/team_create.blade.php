@@ -20,6 +20,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="sport_id">スポーツジャンル</label>
+                        <select class="form-control" name="sport_id">
+                            <option value="">スポーツジャンルを選択して下さい。</option>
+                            @foreach($sports as $sport)
+                            <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="detail">チーム紹介文</label>
                         <textarea class="form-control" name="detail" rows="10"></textarea>
                     </div>

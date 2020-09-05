@@ -34,7 +34,8 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('teams.team_create');
+        $sports = Sport::all();
+        return view('teams.team_create', compact('sports'));
     }
 
     /**
@@ -43,10 +44,12 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Team $team, TeamUser $teamUser)
+    public function store(Request $request, Team $team, TeamUser $teamUser, SportTeam $sportTeam)
     {
+        $sport_id = $request->sport_id;
         $team_id = $team->createTeam($request);
         $teamUser->createTeam($team_id);
+        $sportTeam->createTeam($team_id, $sport_id);
         return redirect('/home');
     }
 
