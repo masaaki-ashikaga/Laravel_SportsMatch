@@ -75,7 +75,11 @@ class EventController extends Controller
         $users = $event->users;
         $event_user = EventUser::all();
         $event_user_id = $event_user->where('event_id', $id)->where('user_id', Auth::id())->first();
-        $event_owner = $event_user_id->where('event_id', $id)->where('owner_user', 1)->first();
+        if($event_user_id != null){
+            $event_owner = $event_user_id->where('event_id', $id)->where('owner_user', 1)->first();
+        } else{
+            $event_owner = null;
+        }
         return view('events.event_detail', compact('event', 'team', 'users', 'sport_img', 'event_user_id', 'event_owner'));
     }
 
@@ -168,8 +172,12 @@ class EventController extends Controller
     public function findEvent(Request $request, Event $event)
     {
         $events = $event->search($request);
-        foreach($events as $event){
-            $event_genre[] = Sport::find($event->sport_id)->sport;
+        if($events != null){
+            foreach($events as $event){
+                $event_genre[] = Sport::find($event->sport_id)->sport;
+            }
+        } else{
+            $event_genre = null;
         }
         $sports = Sport::all();
         return view('events.event_find', compact('events', 'event_genre', 'sports'));

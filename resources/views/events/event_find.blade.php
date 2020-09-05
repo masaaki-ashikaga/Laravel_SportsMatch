@@ -8,6 +8,7 @@
         </div>
         <div class="row">
             <div class="d-flex flex-wrap justify-content-between">
+                @if($events != null)
                 @foreach($events as $key => $event)
                 <div class="mb-5 align-top" style="width: 350px;">
                     <div class="d-flex">
@@ -30,6 +31,9 @@
                     </a>
                 </div>
                 @endforeach
+                @else
+                <p>該当のイベントはございません。</p>
+                @endif
             </div>
         </div>
     </div>

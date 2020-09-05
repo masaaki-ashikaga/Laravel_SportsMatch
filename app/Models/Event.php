@@ -50,12 +50,18 @@ class Event extends Model
     }
 
     public function search($request){
+        $prefecture = $request->prefecture;
+        $genre = $request->genre;
+
         if($request->prefecture != '未選択' && $request->genre != null){
-            $events = Event::where('prefecture', $request->prefecture)->where('public', 1)->where('sport_id', $request->genre)->get();
-        } else if($request->prefecture != '未選択' && $request->genre = null){
-            $events = Event::where('prefecture', $request->prefecture)->where('public', 1)->get();
-        } else if($request->prefecture = '未選択' && $request->genre != null){
-            $events = Event::where('sport_id', $request->genre)->where('public', 1)->get();
+            $events = Event::where('prefecture', $prefecture)->where('public', 1)->where('sport_id', $genre)->get();
+        } elseif($request->prefecture = '未選択' && $request->genre != null){
+            $events = Event::where('sport_id', $genre)->where('public', 1)->get();
+        } else{
+            $events = Event::where('prefecture', $prefecture)->where('public', 1)->get();
+        }
+        if($events->isEmpty()){
+            $events = null;
         }
         return $events;
     }
