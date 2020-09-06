@@ -80,10 +80,13 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, SportTeam $sportTeam)
     {
         $team = Team::find($id);
-        return view('teams.team_edit', compact('team'));
+        $sport_team_id = $sportTeam->where('team_id', $id)->first()->id;
+        $sport_team = SportTeam::find($sport_team_id);
+        $sports = Sport::all();
+        return view('teams.team_edit', compact('team', 'sports', 'sport_team'));
     }
 
     /**
@@ -93,10 +96,12 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, Team $team, SportTeam $sportTeam)
     {
-        $id = $request->id;
-        $team->teamUpdate($id, $request);
+        $sport_id = $request->sport_id;
+        $team_id = $request->id;
+        $team->teamUpdate($team_id, $request);
+        $sportTeam->updateTeam($team_id, $sport_id);
         return redirect()->route('teamManage');
     }
 

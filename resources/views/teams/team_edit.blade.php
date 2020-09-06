@@ -17,7 +17,24 @@
                         <label for="area">都道府県</label>
                         <select type="text" class="form-control" name="area">
                             @foreach(config('pref') as $key => $score)
+                            @if($team->area === $score)
+                            <option value="{{ $score }}" selected>{{ $score }}</option>
+                            @else
                             <option value="{{ $score }}">{{ $score }}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sport_id">スポーツジャンル</label>
+                        <select class="form-control" name="sport_id">
+                            <option value="">スポーツジャンルを選択して下さい。</option>
+                            @foreach($sports as $sport)
+                            @if($sport_team->sport_id === $sport->id)
+                            <option value="{{ $sport->id }}" selected>{{ $sport->sport }}</option>
+                            @else
+                            <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
+                            @endif
                             @endforeach
                         </select>
                     </div>
