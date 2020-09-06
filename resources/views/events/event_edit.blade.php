@@ -15,11 +15,15 @@
                         <select class="form-control" name="team_id">
                             <option value="">チームを選択して下さい。</option>
                             @if($teams != null)
-                            @foreach($teams as $team)
-                            @foreach($team as $key => $name)
-                            <option value="{{ $key }}">{{ $name }}</option>
-                            @endforeach
-                            @endforeach
+                              @foreach($teams as $team)
+                                @foreach($team as $key => $name)
+                                  @if($event->team_id === $key)
+                                  <option value="{{ $key }}" selected>{{ $name }}</option>
+                                  @else
+                                  <option value="{{ $key }}">{{ $name }}</option>
+                                  @endif
+                                @endforeach
+                              @endforeach
                             @endif
                         </select>
                     </div>
@@ -28,7 +32,11 @@
                         <select class="form-control" name="sport_id">
                             <option value="">スポーツジャンルを選択して下さい。</option>
                             @foreach($sports as $sport)
-                            <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
+                              @if($event->sport_id === $sport->id)
+                              <option value="{{ $sport->id }}" selected>{{ $sport->sport }}</option>
+                              @else
+                              <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
+                              @endif
                             @endforeach
                         </select>
                     </div>
@@ -36,7 +44,11 @@
                       <label for="prefecture">都道府県</label>
                       <select type="text" class="form-control" name="prefecture">
                           @foreach(config('pref') as $key => $score)
-                          <option value="{{ $score }}">{{ $score }}</option>
+                            @if($event->prefecture === $score)
+                            <option value="{{ $score }}" selected>{{ $score }}</option>
+                            @else
+                            <option value="{{ $score }}">{{ $score }}</option>
+                            @endif
                           @endforeach
                       </select>
                     </div>
