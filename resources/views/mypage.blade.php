@@ -25,6 +25,7 @@
                             {{-- 好きなスポーツをDBから取ってない。 --}}
                         </div>
                     </div>
+                    <a href="{{ route('profileEdit', ['id' => Auth::id()]) }}" class="btn btn-primary mt-3 ml-2">プロフィールを編集</a>
                 </li>
             </ul>
         </div>
