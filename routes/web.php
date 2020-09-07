@@ -15,6 +15,8 @@ Route::get('/home', 'SportController@index')->name('home');
 Route::get('/genre', 'SportController@genre')->name('genre');
 Route::get('/user/detail/{id}', 'SportController@userDetail')->name('userDetail');
 Route::get('/mypage/{id}', 'SportController@mypage')->name('mypage');
+Route::get('mypage/edit/{id}', 'SportController@profileEdit')->name('profileEdit');
+Route::post('mypage/update', 'SportController@profileUpdate')->name('profileUpdate');
 Route::get('/event/manage', 'EventController@eventManage')->name('eventManage');
 Route::get('/team/manage', 'TeamController@teamManage')->name('teamManage');
 

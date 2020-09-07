@@ -48,4 +48,17 @@ class User extends Authenticatable
     public function sports(){
         return $this->belongsToMany('App\Models\Sport');
     }
+
+    public function profileUpdate($request)
+    {
+        $id = $request->id;
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->area = $request->area;
+        $user->profile = $request->profile;
+        $user->imagepath = $request->imagepath;
+        $user->save();
+        return;
+    }
 }

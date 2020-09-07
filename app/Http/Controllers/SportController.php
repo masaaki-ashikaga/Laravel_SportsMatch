@@ -7,6 +7,7 @@ use App\Models\Sport;
 use App\Models\Event;
 use App\Models\Team;
 use App\Models\EventUser;
+use App\Models\SportUser;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -49,5 +50,20 @@ class SportController extends Controller
         $teams = $user->teams;
         $events = $user->events;
         return view('mypage', compact('user', 'teams', 'events'));
+    }
+
+    public function profileEdit($id)
+    {
+        $user = User::find($id);
+        $sports = Sport::all();
+        return view('profile_edit', compact('user', 'sports'));
+    }
+
+    public function profileUpdate(Request $request, User $user, SportUser $sportUser)
+    {
+        $sports[] = $request->sport_id;
+        $user->profileUpdate($request);
+        $sportUser->favoriteSport($sports);
+        return redirect()->route('mypage',['id' => $request->id]);
     }
 }
