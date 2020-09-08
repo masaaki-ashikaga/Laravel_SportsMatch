@@ -63,7 +63,7 @@ class SportController extends Controller
     {
         $sports[] = $request->sport_id;
         $user->profileUpdate($request);
-        $sportUser->favoriteSport($sports);
+        $sportUser->favoriteSport($sports, $request);
         return redirect()->route('mypage',['id' => $request->id]);
     }
 }
