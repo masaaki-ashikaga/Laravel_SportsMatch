@@ -44,19 +44,27 @@ class SportController extends Controller
         return view('user_detail', compact('user', 'teams', 'events'));
     }
 
-    public function mypage($id)
+    public function mypage($id, SportUser $sportUser)
     {
+        $favorite_sports = $sportUser->where('user_id', $id)->first();
+        $favorite_sport_id = $favorite_sports->sport_id;
+        $array_sport_id = explode(',', $favorite_sport_id);
+        foreach($array_sport_id as $sport_id){
+            $sports[] = Sport::find($sport_id);
+        }
         $user = User::find($id);
         $teams = $user->teams;
         $events = $user->events;
-        return view('mypage', compact('user', 'teams', 'events'));
+        return view('mypage', compact('user', 'teams', 'events', 'sports'));
     }
 
     public function profileEdit($id)
     {
         $user = User::find($id);
         $sports = Sport::all();
-        return view('profile_edit', compact('user', 'sports'));
+        $sportUser = SportUser::where('user_id', $id)->first()->sport_id;
+        $sports_id = explode(',', $sportUser);
+        return view('profile_edit', compact('user', 'sports', 'sports_id'));
     }
 
     public function profileUpdate(Request $request, User $user, SportUser $sportUser)

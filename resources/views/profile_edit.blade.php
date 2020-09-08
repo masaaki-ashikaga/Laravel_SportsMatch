@@ -32,8 +32,13 @@
                         <p>好きなスポーツジャンル</p>
                         @foreach($sports as $key => $sport)
                         <p>
-                        <input type="checkbox" id="sport{{ $key }}" name="sport_id[]" value="{{ $key + 1 }}">
+                        @if(in_array($sport->id, $sports_id))
+                        <input type="checkbox" id="sport{{ $key }}" name="sport_id[]" value="{{ $sport->id }}" checked>
                         <label for="sport{{ $key }}">{{ $sport->sport }}</label>
+                        @else
+                        <input type="checkbox" id="sport{{ $key }}" name="sport_id[]" value="{{ $sport->id }}">
+                        <label for="sport{{ $key }}">{{ $sport->sport }}</label>
+                        @endif
                         </p>
                         @endforeach
                     </div>
