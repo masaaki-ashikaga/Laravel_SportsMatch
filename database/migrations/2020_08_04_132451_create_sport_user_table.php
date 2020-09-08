@@ -15,15 +15,16 @@ class CreateSportUserTable extends Migration
     {
         Schema::create('sport_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('sport_id');
+            // $table->unsignedBigInteger('sport_id');
+            $table->string('sport_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('sport_id')
-                ->references('id')
-                ->on('sports')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            // $table->foreign('sport_id')
+            //     ->references('id')
+            //     ->on('sports')
+            //     ->onDelete('cascade')
+            //     ->onUpdate('cascade');
 
             $table->foreign('user_id')
                 ->references('id')
@@ -32,7 +33,7 @@ class CreateSportUserTable extends Migration
                 ->onUpdate('cascade');
 
             $table->unique([
-                'sport_id',
+                // 'sport_id',
                 'user_id',
             ]);
         });
