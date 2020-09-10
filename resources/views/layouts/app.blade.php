@@ -89,19 +89,27 @@
         </main>
     </div>
     <footer style="height: 400px; background: #0b63a5;">
-        <div style="color: #fff;" class="d-flex">
-            <div style="height: 400px; width: 500px;">
+        <div style="color: #fff;" class="d-flex justify-content-between align-items-center">
+            <div style="height: 400px; width: 500px; padding-left: 100px;">
                 <h1 style="font-family: 'Montserrat Subrayada', sans-serif; color: #fff;" class="display-4 pt-5 pl-5">SPOMATCH</h1>
                 <p class="pl-5 h5">スポーツで出会おう</p>
             </div>
-            <div>
-                <ul>
-                    <li><a href="">SPOMATCHについて</a></li>
-                    <li><a href="">ジャンルから探す</a></li>
-                    <li><a href="">都道府県一覧</a></li>
-                    <li><a href="">マイページ</a></li>
-                    <li><a href="">イベント管理</a></li>
-                    <li><a href="">イベント作成</a></li>
+            <div class="">
+                <ul style="list-style: none; padding-right:200px; font-size: 17px;">
+                    <li class="pt-2"><a href="{{ route('genre') }}" class="text-white">ジャンルから探す</a></li>
+                    <li class="pt-2"><a href="{{ route('team.index') }}" class="text-white">チーム一覧</a></li>
+                    <li class="pt-2"><a href="{{ route('event.index') }}" class="text-white">イベント一覧</a></li>
+                    @guest
+                    <li class="pt-2"><a href="{{ route('register') }}" class="text-white">会員登録</a></li>
+                    <li class="pt-2"><a href="{{ route('login') }}" class="text-white">ログイン</a></li>
+                    @else
+                    <li class="pt-2"><a href="{{ route('mypage', ['id' => Auth::id()]) }}" class="text-white">マイページ</a></li>
+                    <li class="pt-2"><a href="{{ route('event.create') }}" class="text-white">イベント作成</a></li>
+                    <li class="pt-2"><a href="{{ route('eventManage') }}" class="text-white">イベント管理</a></li>
+                    <li class="pt-2"><a href="{{ route('team.create') }}" class="text-white">チーム作成</a></li>
+                    <li class="pt-2"><a href="{{ route('teamManage') }}" class="text-white">チーム管理</a></li>
+                    <li class="pt-2"><a href="{{ route('logout') }}" class="text-white">ログアウト</a></li>
+                    @endguest
                 </ul>
             </div>
         </div>
