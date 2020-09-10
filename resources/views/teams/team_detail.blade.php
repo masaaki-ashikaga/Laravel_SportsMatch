@@ -25,7 +25,7 @@
                                         <input type="hidden" name="team_id" value="{{ $team->id }}">
                                         <input type="submit" value="このチームに参加する" class="btn btn-primary">
                                     </form>
-                                @elseif(Auth::user()->id === $team_user_id->user_id)
+                                @elseif(Auth::user()->id === $owner_user->user_id)
                                     <p class="bg-secondary text-white text-center p-2" style="border-radius: 5px; width: 200px;">このチームのオーナー</p>
                                 @else
                                     <form method="POST" action="{{ url('/team/cancel/' . $team_user_id->id) }}">
