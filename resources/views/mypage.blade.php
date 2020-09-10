@@ -43,6 +43,7 @@
                 <p class="h5">参加しているチーム</p>
             </div>
             <ul class="list-group list-group-flush">
+                @if(!$teams->isEmpty())
                 @foreach($teams as $team)
                     <li class="list-group-item">
                         <div class="d-flex mt-2 mb-2">
@@ -60,6 +61,9 @@
                         </div>
                     </li>
                 @endforeach
+                @else
+                <p class="ml-3 mt-3">参加しているチームはありません。</p>
+                @endif
             </ul>
         </div>
     </div>
@@ -71,6 +75,7 @@
                 <p class="h5">参加しているイベント</p>
             </div>
             <ul class="list-group list-group-flush">
+                @if(!$events->isEmpty())
                 @foreach($events as $event)
                     <li class="list-group-item">
                         <div class="d-flex">
@@ -90,6 +95,9 @@
                         </div>
                     </li>
                 @endforeach
+                @else
+                <p class="mt-3 ml-3">参加しているイベントはありません。</p>
+                @endif
             </ul>
         </div>
     </div>
