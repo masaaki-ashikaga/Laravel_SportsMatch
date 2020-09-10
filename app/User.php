@@ -57,7 +57,9 @@ class User extends Authenticatable
         $user->email = $request->email;
         $user->area = $request->area;
         $user->profile = $request->profile;
-        $user->imagepath = $request->imagepath;
+        if($request->imagepath){
+            $user->imagepath = $request->imagepath;
+        }
         $user->save();
         return;
     }
