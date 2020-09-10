@@ -2,16 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="text-center mt-0 mb-5 border-bottom border-secondary">
+    <div class="text-center mb-5 border-bottom border-secondary">
         <img src="{{ asset('image/top.jpg') }}" style="width: 100%;">
-        <div class="mt-5">
-            <h2 class="mb-4">好きなスポーツから探す</h2>
-            <form class="mb-5">
-                @csrf
-                <input type="text" placeholder="好きなスポーツは？">
-                <input type="submit" class="btn btn-primary" value="検索">
-            </form>
-        </div>
     </div>
     <div>
         <div class="swiper-container mb-5 pb-3 border-bottom border-secondary">

@@ -29,7 +29,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background: #87CEFA">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background: #0b63a5">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}" style="font-family: 'Montserrat Subrayada', sans-serif; color: #fff; font-size: 30px;">
                     {{ config('app.name', 'Laravel') }}
@@ -58,7 +58,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white h2 pt-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white h2 pt-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="font-size: 1rem;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -88,7 +88,7 @@
             @yield('content')
         </main>
     </div>
-    <footer style="height: 400px; background: #87CEFA;">
+    <footer style="height: 400px; background: #0b63a5;">
         <div style="color: #fff;" class="d-flex">
             <div style="height: 400px; width: 500px;">
                 <h1 style="font-family: 'Montserrat Subrayada', sans-serif; color: #fff;" class="display-4 pt-5 pl-5">SPOMATCH</h1>
