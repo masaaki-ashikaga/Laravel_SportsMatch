@@ -108,7 +108,13 @@
                     <li class="pt-2"><a href="{{ route('eventManage') }}" class="text-white">イベント管理</a></li>
                     <li class="pt-2"><a href="{{ route('team.create') }}" class="text-white">チーム作成</a></li>
                     <li class="pt-2"><a href="{{ route('teamManage') }}" class="text-white">チーム管理</a></li>
-                    <li class="pt-2"><a href="{{ route('logout') }}" class="text-white">ログアウト</a></li>
+                    <li class="pt-2">
+                        <a href="{{ route('logout') }}" class="text-white"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                         {{ __('ログアウト') }}
+                     </a>
+                    </li>
                     @endguest
                 </ul>
             </div>
