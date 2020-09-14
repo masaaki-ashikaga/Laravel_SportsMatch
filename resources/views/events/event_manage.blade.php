@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h3>イベント管理</h3>
-    <p class="mb-4">※公開したイベントの編集、非公開イベントへ戻すことはできません。</p>
+    <p class="mb-4 p-1 bg-danger text-white" style="width: 470px; border-radius: 4px;">※公開したイベントの編集、非公開イベントへ戻すことはできません。</p>
     <div class="mb-5">
         <div class="card">
             <div class="card-header d-flex pb-0 justify-content-between">
