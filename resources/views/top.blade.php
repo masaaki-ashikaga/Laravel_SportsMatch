@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.top')
 
 @section('content')
-<div class="container">
+<div>
     <div class="text-center mb-5 border-bottom border-secondary">
         <img src="{{ asset('image/top.jpg') }}" style="width: 100%;">
     </div>
     <div>
         <div class="swiper-container mb-5 pb-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between">
-                <div>
+                <div class="pr-3 pl-3">
                     <h4>スポーツジャンル</h4>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -32,7 +32,7 @@
 
         <div class="swiper-container mb-5 pb-3 border-bottom border-secondary">
             <div class="d-flex justify-content-between">
-                <div>
+                <div class="pr-3 pl-3">
                     @if(Auth::user() != null && auth()->user()->area != null)
                     <h4>{{ auth()->user()->area }}のチーム</h4>
                     @elseif(Auth::user() === null && $teams->where('area', '東京都')->isEmpty())
@@ -63,11 +63,11 @@
 
         <div class="swiper-container mb-5 pb-3">
             <div class="d-flex justify-content-between">
-                <div>
+                <div class="pl-3">
                     <h4>最近作成されたイベント</h4>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('event.index') }}" class="mr-3">すべて表示</a>
+                    <a href="{{ route('event.index') }}" class="pr-3">すべて表示</a>
                 </div>
             </div>
 

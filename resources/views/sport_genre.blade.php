@@ -4,7 +4,7 @@
     <div class="container">
         <h3 class="mb-4">スポーツジャンル一覧</h3>
         <div class="row">
-            <div class="d-flex flex-wrap justify-content-between">
+            <div class="d-flex flex-wrap justify-content-around">
                 @foreach($sports as $sport)
                 <div class="mb-5">
                     <a href="{{ route('eventGenre', ['id' => $sport->id]) }}">
