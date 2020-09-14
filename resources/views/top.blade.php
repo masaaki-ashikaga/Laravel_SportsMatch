@@ -35,6 +35,8 @@
                 <div>
                     @if(Auth::user() != null && auth()->user()->area != null)
                     <h4>{{ auth()->user()->area }}のチーム</h4>
+                    @elseif(Auth::user() === null && $teams->where('area', '東京都')->isEmpty())
+                    <h4>最近作成されたチーム</h4>
                     @else
                     <h4>東京のチーム</h4>
                     @endif

@@ -19,7 +19,10 @@ class SportController extends Controller
         if(Auth::user() != null && auth()->user()->area != null){
             $user_area = auth()->user()->area;
             $teams = $team->where('area', $user_area)->get();
+        } elseif($team->where('area', '東京都')->get()->isEmpty()){
+            $teams = $team->orderBy('created_at', 'desc')->limit(10)->get();
         } else{
+            dd($team->where('area', '東京都')->get()->isEmpty());
             $teams = $team->where('area', '東京都')->get();
         }
         $events = $event->where('public', 1)->orderBy('created_at', 'desc')->limit(10)->get();
