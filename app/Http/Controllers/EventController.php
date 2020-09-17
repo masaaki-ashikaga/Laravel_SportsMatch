@@ -10,6 +10,7 @@ use App\Models\Sport;
 use App\Models\Team;
 use App\Models\TeamUser;
 use App\User;
+use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
@@ -52,7 +53,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Event $event, EventUser $eventUser)
+    public function store(EventRequest $request, Event $event, EventUser $eventUser)
     {
         $event_id = $event->createEvent($request);
         $eventUser->createEvent($event_id);

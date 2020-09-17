@@ -13,12 +13,7 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        if($this->path() == 'event')
-        {
-            return true;
-        } else{
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -31,7 +26,7 @@ class EventRequest extends FormRequest
         return [
             'sport_id' => 'required',
             'prefecture' => 'required',
-            // 'title' => 'requrired|string|max:50',
+            'title' => 'required|string|max:50',
             // 'event_start_date' => 'required|date|after:today',
             // 'event_start_time' => 'required|date|after_or_equal:event_start_date',
             // 'event_start_date' => 'required',

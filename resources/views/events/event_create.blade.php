@@ -8,6 +8,10 @@
                 <form method="POST" action="{{ route('event.store') }}">
                     @csrf
                     <div class="form-group">
+                      @foreach($errors as $error)
+                      <?php dd($error->title) ?>
+                      <p>{{ $error }}</p>
+                      @endforeach
                         <label for="team_id">このイベントが所属するチーム</label>
                         <select class="form-control" name="team_id">
                             <option value="">チームを選択して下さい。</option>
@@ -23,6 +27,9 @@
                     <div class="form-group">
                         <label for="sport_id">スポーツジャンル</label>
                         <select class="form-control" name="sport_id">
+                          @if($errors->has('sport_id'))
+                          {{ $errors->first('sport_id') }}
+                          @endif
                             <option value="">スポーツジャンルを選択して下さい。</option>
                             @foreach($sports as $sport)
                             <option value="{{ $sport->id }}">{{ $sport->sport }}</option>
