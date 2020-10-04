@@ -13,7 +13,7 @@ class TeamRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,8 +27,9 @@ class TeamRequest extends FormRequest
             'name' => 'required|max:50',
             'detail' => 'required|max:150',
             'area' => 'required',
-            'main_imgpath' => 'image',
-            'sub_imgpath' => 'image',
+            'sport_id' => 'required',
+            'main_imgpath' => 'required',
+            'sub_imgpath' => 'required',
         ];
     }
 
@@ -40,8 +41,9 @@ class TeamRequest extends FormRequest
             'detail.required' => 'チーム紹介文を入力してください',
             'detail.max' => 'チーム紹介文は150文字以内で入力してください',
             'area.required' => '都道府県を選択してください',
-            'main_imgpath' => 'メイン画像を選択してください',
-            'sub_imgpath' => 'サブ画像を選択してください',
+            'sport_id.required' => 'スポーツジャンルを選択してください',
+            'main_imgpath.required' => 'メイン画像を選択してください',
+            'sub_imgpath.required' => 'サブ画像を選択してください',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TeamRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
@@ -44,7 +45,7 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Team $team, TeamUser $teamUser, SportTeam $sportTeam)
+    public function store(TeamRequest $request, Team $team, TeamUser $teamUser, SportTeam $sportTeam)
     {
         $sport_id = $request->sport_id;
         $team_id = $team->createTeam($request);
@@ -90,7 +91,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Team $team, SportTeam $sportTeam)
+    public function update(TeamRequest $request, Team $team, SportTeam $sportTeam)
     {
         $sport_id = $request->sport_id;
         $team_id = $request->id;
